@@ -1,0 +1,72 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Ui/Recipes.Ui.csproj": {}
+  },
+  "projects": {
+    "/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Ui/Recipes.Ui.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Ui/Recipes.Ui.csproj",
+        "projectName": "Recipes.Ui",
+        "projectPath": "/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Ui/Recipes.Ui.csproj",
+        "packagesPath": "/Users/stevenlaughton/.nuget/packages/",
+        "outputPath": "/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Ui/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/stevenlaughton/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.SpaServices.Extensions": {
+              "target": "Package",
+              "version": "[6.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.201/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
