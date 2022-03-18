@@ -1,0 +1,138 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Core/Recipes.Core.csproj": {}
+  },
+  "projects": {
+    "/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Core/Recipes.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Core/Recipes.Core.csproj",
+        "projectName": "Recipes.Core",
+        "projectPath": "/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Core/Recipes.Core.csproj",
+        "packagesPath": "/Users/stevenlaughton/.nuget/packages/",
+        "outputPath": "/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Core/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/stevenlaughton/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Infrastructure/Recipes.Infrastructure.csproj": {
+                "projectPath": "/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Infrastructure/Recipes.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[10.0.1, )"
+            },
+            "MediatR.Contracts": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.201/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Infrastructure/Recipes.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Infrastructure/Recipes.Infrastructure.csproj",
+        "projectName": "Recipes.Infrastructure",
+        "projectPath": "/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Infrastructure/Recipes.Infrastructure.csproj",
+        "packagesPath": "/Users/stevenlaughton/.nuget/packages/",
+        "outputPath": "/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/stevenlaughton/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.201/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

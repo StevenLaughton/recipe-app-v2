@@ -1,0 +1,15 @@
+/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Core/bin/Debug/net6.0/Recipes.Core.deps.json
+/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Core/bin/Debug/net6.0/Recipes.Core.dll
+/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Core/bin/Debug/net6.0/Recipes.Core.pdb
+/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Core/obj/Debug/net6.0/Recipes.Core.csproj.AssemblyReference.cache
+/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Core/obj/Debug/net6.0/Recipes.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Core/obj/Debug/net6.0/Recipes.Core.AssemblyInfoInputs.cache
+/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Core/obj/Debug/net6.0/Recipes.Core.AssemblyInfo.cs
+/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Core/obj/Debug/net6.0/Recipes.Core.csproj.CoreCompileInputs.cache
+/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Core/obj/Debug/net6.0/Recipes.Core.dll
+/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Core/obj/Debug/net6.0/refint/Recipes.Core.dll
+/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Core/obj/Debug/net6.0/Recipes.Core.pdb
+/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Core/obj/Debug/net6.0/ref/Recipes.Core.dll
+/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Core/bin/Debug/net6.0/Recipes.Infrastructure.dll
+/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Core/bin/Debug/net6.0/Recipes.Infrastructure.pdb
+/Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Core/obj/Debug/net6.0/Recipes.Core.csproj.CopyComplete
