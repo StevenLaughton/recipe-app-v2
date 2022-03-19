@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.ApplicationInsights;
 using Microsoft.EntityFrameworkCore;
 using Recipes.Infrastructure;
 using Recipes.Infrastructure.Entities;
@@ -10,6 +11,7 @@ public record GetRecipeRequest(int Id) : IRequest<Recipe?>;
 public class GetRecipeHandler : IRequestHandler<GetRecipeRequest, Recipe?>
 {
     private readonly DatabaseContext _context;
+    private readonly TelemetryClient _telemetryClient; 
 
     public GetRecipeHandler(DatabaseContext context)
     {

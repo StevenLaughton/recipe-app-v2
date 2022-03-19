@@ -1,6 +1,6 @@
+using System.Net;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Recipes.Core;
 using Recipes.Core.Services;
 using Recipes.Infrastructure.Entities;
 
@@ -18,11 +18,21 @@ public class RecipesController : ControllerBase
     }
 
     [HttpGet(nameof(GetRecipe))]
+    [ProducesResponseType(typeof(Recipe), (int) HttpStatusCode.OK)]
     public async Task<Recipe?> GetRecipe(int id)
     {
-        GetRecipeRequest request = new(id);
-        var result = await _mediator.Send(request);
+        var result = await _mediator.Send(new GetRecipeRequest(id));
 
         return result;
     }
+
+    [HttpGet(nameof(GetRecipe2))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public IActionResult GetRecipe2()
+    {
+        return Ok(new TestDto("Pong"));
+    }
 }
+
+public record TestDto(string Response);
