@@ -15,4 +15,12 @@
       <_ContentIncludedByDefault Remove="recipes\ionic.config.json" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Include="Client\src\config\web.config">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
