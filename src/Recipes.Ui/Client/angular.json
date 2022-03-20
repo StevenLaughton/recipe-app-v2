@@ -30,13 +30,12 @@
                 "input": "node_modules/ionicons/dist/ionicons/svg",
                 "output": "./svg"
               },
-              {
-                "glob": "config/web.config",
-                "input": "src/config/web.config",
-                "output": "web.config"
-              }
+              "src/web.config"
             ],
-            "styles": ["src/theme/variables.scss", "src/global.scss"],
+            "styles": [
+              "src/theme/variables.scss",
+              "src/global.scss"
+            ],
             "scripts": [],
             "aot": false,
             "vendorChunk": true,
