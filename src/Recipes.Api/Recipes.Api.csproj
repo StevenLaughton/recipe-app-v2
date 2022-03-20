@@ -26,6 +26,7 @@
 
     <ItemGroup>
       <Content Remove="appsettings.Development.json" />
+      <Content Include="appsettings.development.json" />
     </ItemGroup>
 
     <ItemGroup>

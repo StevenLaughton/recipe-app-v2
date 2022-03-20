@@ -10,8 +10,14 @@ public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
     {
         builder.ToTable("Recipes").HasKey(r => r.Id);
 
+        builder.Property(recipe => recipe.Name)
+            .HasMaxLength(256);
+
         builder.HasMany(recipe => recipe.Ingredients)
             .WithOne(ingredient => ingredient.Recipe)
             .HasForeignKey(ingredient => ingredient.RecipeId);
+
+        builder.HasMany(recipe => recipe.Tags)
+            .WithMany(tag => tag.Recipes);
     }
 }

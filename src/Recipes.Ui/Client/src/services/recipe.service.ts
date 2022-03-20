@@ -4,24 +4,19 @@ import {Observable, of} from "rxjs";
 import {ApplicationInsightsService} from "./application-insights.service";
 import {catchError} from "rxjs/operators";
 import {TestModel} from "../models/test.model";
+import {environment} from "../environments/environment";
+import {BaseService} from "./base.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class RecipeService {
-  controller: string = 'Recipes';
+export class RecipeService extends BaseService {
 
-  constructor(private readonly httpService: HttpClient,
-              private readonly applicationInsightsService: ApplicationInsightsService) {
+  constructor(private readonly httpService: HttpClient) {
+    super({controller: 'Recipes'});
   }
 
   public get2(): Observable<TestModel> {
-    return this.httpService.get<TestModel>(`${this.controller}/GetRecipe2`).pipe(
-      catchError((err) => {
-        console.log(err)
-        this.applicationInsightsService.logException(err)
-        return of({response: '2'})
-      })
-    );
+    return this.httpService.get<TestModel>(this.Url('GetRecipe2'));
   }
 }

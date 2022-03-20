@@ -1,13 +1,13 @@
 using System.Net;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Recipes.Api.Constants;
 using Recipes.Core.Services;
 using Recipes.Infrastructure.Entities;
 
 namespace Recipes.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
 public class RecipesController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -17,16 +17,16 @@ public class RecipesController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet(nameof(GetRecipe))]
-    [ProducesResponseType(typeof(Recipe), (int) HttpStatusCode.OK)]
-    public async Task<Recipe?> GetRecipe(int id)
+    [HttpGet(Routes.Default)]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Recipe))]
+    public async Task<IActionResult> GetRecipe(int id)
     {
         var result = await _mediator.Send(new GetRecipeRequest(id));
 
-        return result;
+        return Ok(result);
     }
 
-    [HttpGet(nameof(GetRecipe2))]
+    [HttpGet(Routes.Default)]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public IActionResult GetRecipe2()
