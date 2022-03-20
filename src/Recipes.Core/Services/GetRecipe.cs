@@ -11,7 +11,6 @@ public record GetRecipeRequest(int Id) : IRequest<Recipe?>;
 public class GetRecipeHandler : IRequestHandler<GetRecipeRequest, Recipe?>
 {
     private readonly DatabaseContext _context;
-    private readonly TelemetryClient _telemetryClient; 
 
     public GetRecipeHandler(DatabaseContext context)
     {
