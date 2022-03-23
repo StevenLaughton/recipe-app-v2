@@ -1,10 +1,11 @@
 {
   "name": "Recipe App",
   "short_name": "Recipe App",
-  "theme_color": "#1976d2",
+  "theme_color": "#fafafa",
   "background_color": "#fafafa",
-  "display": "fullscreen",
-  "scope": "./",
+  "display": "standalone",
+  "lang": "en-UK",
+  "scope": "https://recipe-app-ui.azurewebsites.net/",
   "start_url": "./",
   "icons": [
     {
