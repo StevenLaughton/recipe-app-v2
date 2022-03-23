@@ -10,6 +10,7 @@ import {RecipeService} from "../../services/recipe.service";
 })
 export class Tab1Page {
   test$: Observable<TestModel>;
+   arr = [...Array(20).keys()];
 
   constructor(private readonly recipeService: RecipeService) {
     this.test$ = recipeService.get2();
