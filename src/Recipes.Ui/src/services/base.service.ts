@@ -11,7 +11,7 @@ export class BaseService {
     this._controller = controller;
   }
 
-  protected Url(route: string): string {
+  protected url(route: string): string {
     return `${environment.apiUrl}/${this._controller}/${route}`;
   }
 }

@@ -17,10 +17,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Client" />
-    </ItemGroup>
-
-    <ItemGroup>
       <None Include="node_modules\@angular-devkit\architect\builders\all-of.d.ts" />
       <None Include="node_modules\@angular-devkit\architect\builders\concat.d.ts" />
       <None Include="node_modules\@angular-devkit\architect\builders\false.d.ts" />
@@ -4427,6 +4423,10 @@
       <Content Include="node_modules\xml2js\LICENSE" />
       <Content Include="node_modules\xml2js\package.json" />
       <Content Include="node_modules\xml2js\README.md" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="src\app\shared" />
     </ItemGroup>
 
 </Project>

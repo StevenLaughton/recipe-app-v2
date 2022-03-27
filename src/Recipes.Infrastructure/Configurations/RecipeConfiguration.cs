@@ -13,6 +13,10 @@ public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
         builder.Property(recipe => recipe.Name)
             .HasMaxLength(256);
 
+        builder.HasOne(recipe => recipe.Image)
+            .WithOne(image => image.Recipe)
+            .HasForeignKey<RecipeImage>(image => image.RecipeId);
+
         builder.HasMany(recipe => recipe.Ingredients)
             .WithOne(ingredient => ingredient.Recipe)
             .HasForeignKey(ingredient => ingredient.RecipeId);

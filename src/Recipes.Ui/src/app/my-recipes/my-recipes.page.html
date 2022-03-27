@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-segment (ionChange)="segmentChanged($event)" value="food">
+      <ion-segment-button value="food">
+        <ion-label>Food</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="drink">
+        <ion-label>Drinks</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ng-container *ngFor="let val of arr">
+        <ion-col size="6" size-sm="4" size-md="3" size-lg="2" size-xl="1">
+          <ion-card [button]="true" [routerLink]="1">
+            <ion-img src="assets/icons/icon-128x128.png"></ion-img>
+            <ion-card-header>
+              <ion-card-subtitle>Chili</ion-card-subtitle>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+      </ng-container>
+    </ion-row>
+  </ion-grid>
+</ion-content>

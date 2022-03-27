@@ -1,11 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable, of} from "rxjs";
-import {ApplicationInsightsService} from "./application-insights.service";
-import {catchError} from "rxjs/operators";
-import {TestModel} from "../models/test.model";
-import {environment} from "../environments/environment";
+import {Observable} from "rxjs";
 import {BaseService} from "./base.service";
+import {RecipeListItem} from "../models/recipe-list-item";
+import {Recipe} from "../models/recipe";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +14,11 @@ export class RecipeService extends BaseService {
     super({controller: 'Recipes'});
   }
 
-  public get2(): Observable<TestModel> {
-    return this.httpService.get<TestModel>(this.Url('GetRecipe2'));
+  public getList(): Observable<RecipeListItem[]> {
+    return this.httpService.get<RecipeListItem[]>(this.url('GetList'));
+  }
+
+  public get({recipeId}: RecipeListItem): Observable<Recipe> {
+    return this.httpService.get(this.url(`Get/${recipeId}`))
   }
 }

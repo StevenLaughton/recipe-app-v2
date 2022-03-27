@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using Recipes.Infrastructure.Entities;
 
 namespace Recipes.Infrastructure;
@@ -16,4 +17,6 @@ public class DatabaseContext : DbContext
 
     public DbSet<Recipe> Recipes { get; set; }
     public DbSet<Ingredient> Ingredients { get; set; }
+    public DbSet<Tag> Tags { get; set; }
+    public DbSet<RecipeImage> RecipeImages { get; set; }
 }
