@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ModalController} from '@ionic/angular';
 
 @Component({
@@ -7,6 +7,7 @@ import {ModalController} from '@ionic/angular';
   styleUrls: ['view.page.scss'],
 })
 export class ViewPage {
+  @Input() recipeId: number;
 
   constructor(private readonly modalController: ModalController) {
   }

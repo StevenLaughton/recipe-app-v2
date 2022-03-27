@@ -3,7 +3,7 @@ import {IonRouterOutlet, ModalController} from '@ionic/angular';
 import {Observable} from "rxjs";
 import {RecipeService} from "../../services/recipe.service";
 import {RecipeListItem} from "../../models/recipe-list-item";
-import {Router} from "@angular/router";
+import {Params, Router} from "@angular/router";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import {filter, tap} from "rxjs/operators";
 import {ViewPage} from "../view/view.page";
@@ -30,27 +30,22 @@ export class MyRecipesPage implements OnInit {
     this.routerOutlet.activatedRoute.params.pipe(
       untilDestroyed(this),
       filter(params => !!params.id),
-      tap(param => this.presentModal()),
+      tap(params => this.presentModal(params)),
     ).subscribe();
-  }
-
-  openRecipe(): void {
-    this.router.navigate(['./'], {
-      relativeTo: this.routerOutlet.activatedRoute,
-      queryParams: {params: 1},
-      skipLocationChange: true,
-    })
   }
 
   segmentChanged(val: any): void {
   }
 
-  async presentModal(): Promise<void> {
+  async presentModal({id}: Params): Promise<void> {
     const modal = await this.modalController.create({
       component: ViewPage,
       swipeToClose: true,
       handle: true,
       presentingElement: this.routerOutlet.nativeEl,
+      componentProps: {
+        recipeId: Number(id)
+      }
     });
 
     modal.onDidDismiss().then(_ => this.router.navigate(['../'], {
