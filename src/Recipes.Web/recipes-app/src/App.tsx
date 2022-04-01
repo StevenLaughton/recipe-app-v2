@@ -11,7 +11,7 @@ import {
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { readerOutline, search, add } from 'ionicons/icons';
-import { FunctionComponent } from 'react';
+import React from 'react';
 import MyRecipes from './pages/MyRecipes';
 import Search from './pages/Search';
 import Add from './pages/Add';
@@ -33,41 +33,43 @@ import './theme/variables.css';
 
 setupIonicReact();
 
-const App: FunctionComponent = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/my-recipes">
-            <MyRecipes />
-          </Route>
-          <Route exact path="/search">
-            <Search />
-          </Route>
-          <Route path="/add">
-            <Add />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/my-recipes" />
-          </Route>
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="my-recipes" href="/my-recipes">
-            <IonIcon icon={readerOutline} />
-            <IonLabel>My Recipes</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="search" href="/search">
-            <IonIcon icon={search} />
-            <IonLabel>Search</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="add" href="/add">
-            <IonIcon icon={add} />
-            <IonLabel>Add</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
+function App() {
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            <Route exact path="/my-recipes">
+              <MyRecipes />
+            </Route>
+            <Route exact path="/search">
+              <Search />
+            </Route>
+            <Route path="/add">
+              <Add />
+            </Route>
+            <Route exact path="/">
+              <Redirect to="/my-recipes" />
+            </Route>
+          </IonRouterOutlet>
+          <IonTabBar slot="bottom">
+            <IonTabButton tab="my-recipes" href="/my-recipes">
+              <IonIcon icon={readerOutline} />
+              <IonLabel>My Recipes</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="search" href="/search">
+              <IonIcon icon={search} />
+              <IonLabel>Search</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="add" href="/add">
+              <IonIcon icon={add} />
+              <IonLabel>Add</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  );
+}
 
 export default App;
