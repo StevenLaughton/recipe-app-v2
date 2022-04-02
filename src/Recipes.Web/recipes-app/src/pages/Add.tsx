@@ -1,17 +1,19 @@
 import {
+  IonButton,
   IonCheckbox,
   IonContent,
-  IonHeader,
+  IonHeader, IonIcon,
   IonInput,
   IonItem,
   IonLabel,
-  IonList,
+  IonList, IonListHeader,
   IonPage,
   IonTitle, IonToggle,
   IonToolbar,
 } from '@ionic/react';
 import React, { useMemo } from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import { addCircleOutline } from 'ionicons/icons';
 import { Recipe } from '../models/recipe';
 
 export interface CheckboxChangeEventDetail {
@@ -46,7 +48,7 @@ function Add() {
         </IonHeader>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <IonList inset>
+          <IonList inset lines="inset">
             <IonItem>
               <Controller
                 render={({ field: { onChange, value } }) => (
@@ -90,24 +92,45 @@ function Add() {
               />
             </IonItem>
           </IonList>
+
+          <IonListHeader>
+            <IonLabel>Steps</IonLabel>
+          </IonListHeader>
           <IonList inset>
             <IonItem>
-              <IonLabel>Vegetarian: </IonLabel>
+              <IonIcon icon={addCircleOutline} slot="start" />
               <Controller
                 render={({ field: { onChange, value } }) => (
-                  <IonCheckbox
-                    onIonChange={(e: CustomEvent<CheckboxChangeEventDetail>) => {
-                      onChange(e?.detail.checked);
-                    }}
-                    checked={value}
+                  <IonInput
+                    onIonChange={onChange}
+                    value={value}
                   />
                 )}
-                name="isVegetarian"
+                name="name"
                 control={control}
               />
             </IonItem>
           </IonList>
-          <button type="submit">Submit</button>
+
+          <IonListHeader>
+            <IonLabel>Ingrediants</IonLabel>
+          </IonListHeader>
+          <IonList inset>
+            <IonItem>
+              <IonIcon icon={addCircleOutline} slot="start" />
+              <Controller
+                render={({ field: { onChange, value } }) => (
+                  <IonInput
+                    onIonChange={onChange}
+                    value={value}
+                  />
+                )}
+                name="name"
+                control={control}
+              />
+            </IonItem>
+          </IonList>
+          <IonButton expand="block" type="submit">Submit</IonButton>
         </form>
       </IonContent>
     </IonPage>

@@ -19,7 +19,7 @@ function MyRecipes() {
 
   return (
     <IonPage>
-      <IonHeader collapse="fade" translucent>
+      <IonHeader>
         <IonToolbar>
           <IonTitle>Recipes2</IonTitle>
         </IonToolbar>
