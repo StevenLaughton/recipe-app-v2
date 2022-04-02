@@ -19,18 +19,18 @@ public class RecipesController : ControllerBase
 
     [HttpGet(Routes.Default)]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IList<RecipeListItemDto>))]
-    public async Task<IActionResult> GetList()
+    public async Task<IActionResult> GetList(CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(new GetRecipeListRequest());
+        var result = await _mediator.Send(new GetRecipeListRequest(), cancellationToken);
 
         return Ok(result);
     }
 
     [HttpGet(Routes.WithId)]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Recipe))]
-    public async Task<IActionResult> Get(int id)
+    public async Task<IActionResult> Get(int id, CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(new GetRecipeRequest(id));
+        var result = await _mediator.Send(new GetRecipeRequest(id), cancellationToken);
 
         return Ok(result);
     }

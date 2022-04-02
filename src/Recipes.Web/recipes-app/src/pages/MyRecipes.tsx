@@ -21,12 +21,12 @@ function MyRecipes() {
     <IonPage>
       <IonHeader collapse="fade" translucent>
         <IonToolbar>
-          <IonTitle>Recipes</IonTitle>
+          <IonTitle>Recipes2</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <IonContent fullscreen color="light">
         <IonHeader collapse="condense">
-          <IonToolbar>
+          <IonToolbar color="light">
             <IonTitle size="large">Recipes</IonTitle>
           </IonToolbar>
         </IonHeader>

@@ -38,9 +38,9 @@ function Add() {
           <IonTitle>Add Recipe</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen style={{ '--background': '#f2f2f2' }}>
-        <IonHeader translucent collapse="condense">
-          <IonToolbar>
+      <IonContent fullscreen color="light">
+        <IonHeader collapse="condense">
+          <IonToolbar color="light">
             <IonTitle size="large">Add Recipe</IonTitle>
           </IonToolbar>
         </IonHeader>
