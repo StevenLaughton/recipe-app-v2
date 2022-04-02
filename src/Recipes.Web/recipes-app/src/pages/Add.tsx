@@ -1,6 +1,5 @@
 import {
   IonButton,
-  IonCheckbox,
   IonContent,
   IonHeader, IonIcon,
   IonInput,
