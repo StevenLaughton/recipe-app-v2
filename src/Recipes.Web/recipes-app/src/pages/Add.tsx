@@ -75,7 +75,7 @@ function Add() {
                 control={control}
               />
             </IonItem>
-            <IonItem>
+            <IonItem lines="none">
               <IonLabel>Vegetarian: </IonLabel>
               <Controller
                 render={({ field: { onChange, value } }) => (
@@ -97,7 +97,7 @@ function Add() {
           </IonListHeader>
           <IonList inset>
             <IonItem>
-              <IonIcon icon={addCircleOutline} slot="start" />
+              <IonIcon icon={addCircleOutline} slot="end" />
               <Controller
                 render={({ field: { onChange, value } }) => (
                   <IonInput
@@ -116,7 +116,7 @@ function Add() {
           </IonListHeader>
           <IonList inset>
             <IonItem>
-              <IonIcon icon={addCircleOutline} slot="start" />
+              <IonIcon icon={addCircleOutline} slot="end" />
               <Controller
                 render={({ field: { onChange, value } }) => (
                   <IonInput

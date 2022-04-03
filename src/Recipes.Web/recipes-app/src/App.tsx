@@ -1,4 +1,4 @@
-import { Redirect, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import {
   IonApp,
   IonIcon,
@@ -39,7 +39,7 @@ function App() {
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            <Route exact path="/my-recipes">
+            <Route exact path="/">
               <MyRecipes />
             </Route>
             <Route exact path="/search">
@@ -48,12 +48,9 @@ function App() {
             <Route path="/add">
               <Add />
             </Route>
-            <Route exact path="/">
-              <Redirect to="/my-recipes" />
-            </Route>
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
-            <IonTabButton tab="my-recipes" href="/my-recipes">
+            <IonTabButton tab="my-recipes" href="/">
               <IonIcon icon={readerOutline} />
               <IonLabel>My Recipes</IonLabel>
             </IonTabButton>
