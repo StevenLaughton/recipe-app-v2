@@ -39,7 +39,7 @@ function App() {
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            <Route exact path="/">
+            <Route exact path="/my-recipes">
               <MyRecipes />
             </Route>
             <Route exact path="/search">
@@ -48,9 +48,12 @@ function App() {
             <Route path="/add">
               <Add />
             </Route>
+            {/* <Route exact path="/"> */}
+            {/*  <Redirect to="/my-recipes" /> */}
+            {/* </Route> */}
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
-            <IonTabButton tab="my-recipes" href="/">
+            <IonTabButton tab="my-recipes" href="/my-recipes">
               <IonIcon icon={readerOutline} />
               <IonLabel>My Recipes</IonLabel>
             </IonTabButton>
