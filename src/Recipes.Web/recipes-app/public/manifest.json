@@ -1,21 +1,25 @@
 {
+  "background_color": "#008f00",
+  "description": "Recipes",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Recipes",
+  "orientation": "any",
+  "scope": "/",
   "short_name": "Recipes",
-  "name": "My Recipes App",
+  "start_url": "/",
+  "theme_color": "#008f00",
   "icons": [
     {
-      "src": "assets/icon/favicon.png",
+      "src": "assets/icon/bowl.svg",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "assets/icon/icon.png",
+      "src": "assets/icon/bowl.svg",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
     }
   ],
-  "start_url": "/",
-  "display": "standalone",
-  "theme_color": "#d7d8da",
-  "background_color": "#d7d8da"
 }

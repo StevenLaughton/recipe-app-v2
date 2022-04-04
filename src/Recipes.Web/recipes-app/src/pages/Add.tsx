@@ -20,6 +20,10 @@ export interface CheckboxChangeEventDetail {
   checked: boolean;
 }
 
+export type StepControl = {
+  step: string
+};
+
 function Add() {
   const defaultValues = useMemo(() => ({
     id: null,
@@ -29,6 +33,12 @@ function Add() {
   } as Recipe), []);
 
   const { control, handleSubmit } = useForm<Recipe>({ defaultValues });
+  // const { fields, append } = useFieldArray(
+  //   {
+  //     name: `recipe.keyValue`,
+  //     control,
+  //   },
+  // );
   // eslint-disable-next-line no-console
   const onSubmit = (data: Recipe) => console.log(data);
 
@@ -96,19 +106,22 @@ function Add() {
             <IonLabel>Steps</IonLabel>
           </IonListHeader>
           <IonList inset>
-            <IonItem>
-              <IonIcon icon={addCircleOutline} slot="end" />
-              <Controller
-                render={({ field: { onChange, value } }) => (
-                  <IonInput
-                    onIonChange={onChange}
-                    value={value}
-                  />
-                )}
-                name="name"
-                control={control}
-              />
-            </IonItem>
+            {/* {fields.map((item) => ( */}
+            {/*  <IonItem key={item.id}> */}
+            {/*    <IonIcon icon={addCircleOutline} slot="end" /> */}
+            {/*    <Controller */}
+            {/*      render={({ field: { onChange, value } }) => ( */}
+            {/*        <IonInput */}
+            {/*          ref={control} */}
+            {/*          onIonChange={onChange} */}
+            {/*          value={value} */}
+            {/*        /> */}
+            {/*      )} */}
+            {/*      name="name" */}
+            {/*      control={control} */}
+            {/*    /> */}
+            {/*  </IonItem> */}
+            {/* ))} */}
           </IonList>
 
           <IonListHeader>

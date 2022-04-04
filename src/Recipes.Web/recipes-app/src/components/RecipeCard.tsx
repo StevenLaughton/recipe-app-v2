@@ -11,7 +11,7 @@ function RecipeCard() {
   return (
     <IonCard style={cardStyle} button>
       <IonCardContent>
-        <IonImg src="/assets/icon/icon.png" />
+        <IonImg src="/assets/icon/fast-food.svg" />
       </IonCardContent>
       <IonCardHeader>
         <IonCardTitle style={{ fontSize: '14px' }}>Card Title</IonCardTitle>
