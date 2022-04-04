@@ -21,7 +21,7 @@ function MyRecipes() {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Recipes2</IonTitle>
+          <IonTitle>Recipes</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen color="light">
