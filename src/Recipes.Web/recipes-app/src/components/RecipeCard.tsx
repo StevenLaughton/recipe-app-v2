@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import {
-  IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonImg,
+  IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonImg, IonSpinner,
 } from '@ionic/react';
 
 function RecipeCard() {
@@ -11,7 +11,9 @@ function RecipeCard() {
   return (
     <IonCard style={cardStyle} button>
       <IonCardContent>
-        <IonImg src="/assets/icon/fast-food.svg" />
+        <Suspense fallback={<IonSpinner />}>
+          <IonImg src="/assets/icon/fast-food.svg" />
+        </Suspense>
       </IonCardContent>
       <IonCardHeader>
         <IonCardTitle style={{ fontSize: '14px' }}>Card Title</IonCardTitle>
