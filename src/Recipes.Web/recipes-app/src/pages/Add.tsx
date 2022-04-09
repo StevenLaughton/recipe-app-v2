@@ -80,7 +80,7 @@ function Add() {
             </IonCard>
 
             <IonListHeader>
-              <IonLabel>Ingrediants</IonLabel>
+              <IonLabel>Ingredients</IonLabel>
             </IonListHeader>
             <IonCard>
               <IngredientsInput />
