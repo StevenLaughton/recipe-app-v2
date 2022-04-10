@@ -59,7 +59,7 @@ function IngredientsInput() {
                 onPaste={(event$) => parseAndInsert(event$, index)}
                 onKeyDown={(event$) => insertNewRowIfEnter(event$, index)}
                 size={10}
-                style={{ fontWeight: watch(`ingredients.${index}.isGroupHeader`) ? 'bold' : 'normal' }}
+                style={{ textAlign: 'end', fontWeight: watch(`ingredients.${index}.isGroupHeader`) ? 'bold' : 'normal' }}
               />
             )}
             control={control}
@@ -75,7 +75,7 @@ function IngredientsInput() {
                 size={100}
                 onPaste={(event$) => parseAndInsert(event$, index)}
                 onKeyDown={(event$) => insertNewRowIfEnter(event$, index)}
-                style={{ flexGrow: 5, fontWeight: watch(`ingredients.${index}.isGroupHeader`) ? 'bold' : 'normal' }}
+                style={{ flexGrow: 6, fontWeight: watch(`ingredients.${index}.isGroupHeader`) ? 'bold' : 'normal' }}
               />
             )}
             control={control}

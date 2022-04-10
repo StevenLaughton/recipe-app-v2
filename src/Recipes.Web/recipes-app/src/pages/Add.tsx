@@ -1,12 +1,12 @@
 import {
   IonButton,
-  IonCard,
-  IonContent,
-  IonHeader,
+  IonCard, IonCol,
+  IonContent, IonGrid,
+  IonHeader, IonIcon,
   IonItem,
   IonLabel,
   IonListHeader,
-  IonPage,
+  IonPage, IonRow,
   IonTitle,
   IonToggle,
   IonToolbar,
@@ -15,6 +15,9 @@ import React, { useMemo } from 'react';
 import {
   useForm, Controller, FormProvider,
 } from 'react-hook-form';
+import {
+  cameraOutline, clipboardOutline, imageOutline, sadOutline,
+} from 'ionicons/icons';
 import { Recipe } from '../models/recipe';
 import IngredientsInput from '../components/IngredientsInput';
 import AppInput from '../components/AppInput';
@@ -91,6 +94,42 @@ function Add() {
             </IonListHeader>
             <IonCard>
               <StepsInput />
+            </IonCard>
+
+            <IonListHeader>
+              <IonLabel>Picture</IonLabel>
+            </IonListHeader>
+            <IonCard>
+              <IonGrid>
+                <IonRow>
+                  <IonCol
+                    size="5"
+                    class="ion-align-self-center ion-justify-content-evenly"
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <IonIcon size="large" icon={sadOutline} />
+                    <IonLabel> No picture! </IonLabel>
+                  </IonCol>
+                  <IonCol size="7">
+                    <IonButton color="primary" size="small">
+                      <IonIcon icon={clipboardOutline} slot="start" />
+                      Paste From Clipboard
+                    </IonButton>
+                    <IonButton color="secondary" size="small">
+                      <IonIcon icon={cameraOutline} slot="start" />
+                      Open Camera
+                    </IonButton>
+                    <IonButton color="tertiary" size="small">
+                      <IonIcon icon={imageOutline} slot="start" />
+                      Open Gallery
+                    </IonButton>
+                  </IonCol>
+                </IonRow>
+              </IonGrid>
             </IonCard>
             <IonButton expand="block" type="submit">Submit</IonButton>
           </form>
