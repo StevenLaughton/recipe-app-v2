@@ -3,18 +3,17 @@ export interface Recipe {
   name: string | null;
   portions: number | null;
   isVegetarian: boolean;
-  steps: string[];
+  ingredients: Ingredient[];
+  steps: Step[];
 }
 
-export type ListType = {
-  value: string;
-};
+export interface Step {
+  text: string;
+  isGroupHeader: boolean;
+}
 
-export interface RecipeForm {
-  id: number | null;
-  name: string | null;
-  portions: number | null;
-  isVegetarian: boolean;
-  steps: ListType[];
-  ingredients: ListType[];
+export interface Ingredient {
+  quantity: number | null;
+  text: string;
+  isGroupHeader: boolean;
 }

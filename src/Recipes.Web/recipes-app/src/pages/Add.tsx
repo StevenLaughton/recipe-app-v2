@@ -1,19 +1,21 @@
 import {
-  IonButton, IonCard,
+  IonButton,
+  IonCard,
   IonContent,
   IonHeader,
   IonItem,
   IonLabel,
   IonListHeader,
   IonPage,
-  IonTitle, IonToggle,
+  IonTitle,
+  IonToggle,
   IonToolbar,
 } from '@ionic/react';
 import React, { useMemo } from 'react';
 import {
   useForm, Controller, FormProvider,
 } from 'react-hook-form';
-import { RecipeForm } from '../models/recipe';
+import { Recipe } from '../models/recipe';
 import IngredientsInput from '../components/IngredientsInput';
 import AppInput from '../components/AppInput';
 import StepsInput from '../components/StepsInput';
@@ -29,14 +31,14 @@ function Add() {
     name: null,
     portions: null,
     isVegetarian: false,
-    ingredients: [{ value: '' }],
-    steps: [{ value: '' }],
-  } as RecipeForm), []);
+    ingredients: [{ quantity: null, text: '', isGroupHeader: false }],
+    steps: [{ text: '', isGroupHeader: false }],
+  } as Recipe), []);
 
-  const form = useForm<RecipeForm>({ defaultValues });
+  const form = useForm<Recipe>({ defaultValues });
 
   // eslint-disable-next-line no-console
-  const onSubmit = (data: RecipeForm) => console.log(data);
+  const onSubmit = (data: Recipe) => console.log(data);
 
   return (
     <IonPage>
@@ -56,10 +58,10 @@ function Add() {
           <form onSubmit={form.handleSubmit(onSubmit)}>
             <IonCard>
               <IonItem>
-                <AppInput name="name" placeholder="Name" inputmode="text" />
+                <AppInput name="name" placeholder="Name" inputmode="text" autoCapitalize="words" />
               </IonItem>
               <IonItem>
-                <AppInput name="portions" placeholder="Portions" inputmode="numeric" />
+                <AppInput name="portions" placeholder="Portions" inputmode="numeric" autoCapitalize="off" />
               </IonItem>
               <IonItem lines="none">
                 <IonLabel>Vegetarian: </IonLabel>
@@ -78,7 +80,6 @@ function Add() {
                 />
               </IonItem>
             </IonCard>
-
             <IonListHeader>
               <IonLabel>Ingredients</IonLabel>
             </IonListHeader>

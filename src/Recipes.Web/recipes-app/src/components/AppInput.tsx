@@ -6,9 +6,12 @@ export type AppInputProps = {
   name: string;
   placeholder: string;
   inputmode: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+  autoCapitalize: 'off' | 'none' | 'on' | 'sentences' | 'words';
 };
 
-function AppInput({ name, placeholder, inputmode }: AppInputProps) {
+function AppInput({
+  name, placeholder, inputmode, autoCapitalize,
+}: AppInputProps) {
   const { control } = useFormContext();
 
   return (
@@ -19,6 +22,7 @@ function AppInput({ name, placeholder, inputmode }: AppInputProps) {
           value={value}
           placeholder={placeholder}
           inputmode={inputmode}
+          autoCapitalize={autoCapitalize}
         />
       )}
       name={name}
