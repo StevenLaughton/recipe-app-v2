@@ -1,5 +1,4 @@
 using MediatR;
-using Microsoft.ApplicationInsights;
 using Microsoft.EntityFrameworkCore;
 using Recipes.Infrastructure;
 using Recipes.Infrastructure.Entities;

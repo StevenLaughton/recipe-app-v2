@@ -1,3 +1,5 @@
+import { RecipeImage } from './recipe-image';
+
 export interface Recipe {
   id: number | null;
   name: string | null;
@@ -5,6 +7,7 @@ export interface Recipe {
   isVegetarian: boolean;
   ingredients: Ingredient[];
   steps: Step[];
+  image: RecipeImage;
 }
 
 export interface Step {

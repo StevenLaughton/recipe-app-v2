@@ -12,6 +12,7 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 import { readerOutline, search, add } from 'ionicons/icons';
 import React from 'react';
+import { Provider } from 'use-http';
 import MyRecipes from './pages/MyRecipes';
 import Search from './pages/Search';
 import Add from './pages/Add';
@@ -39,18 +40,20 @@ function App() {
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            <Route exact path="/my-recipes">
-              <MyRecipes />
-            </Route>
-            <Route exact path="/search">
-              <Search />
-            </Route>
-            <Route path="/add">
-              <Add />
-            </Route>
-            <Route exact path="/">
-              <Redirect to="/my-recipes" />
-            </Route>
+            <Provider url={process.env.REACT_APP_PUBLIC_URL}>
+              <Route exact path="/my-recipes">
+                <MyRecipes />
+              </Route>
+              <Route exact path="/search">
+                <Search />
+              </Route>
+              <Route path="/add">
+                <Add />
+              </Route>
+              <Route exact path="/">
+                <Redirect to="/my-recipes" />
+              </Route>
+            </Provider>
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
             <IonTabButton tab="my-recipes" href="/my-recipes">
