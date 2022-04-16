@@ -2,8 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recipes.Api", "src\Recipes.Api\Recipes.Api.csproj", "{AAA79712-27C4-48F6-A34C-FAFDE3B53B2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recipes.Ui", "src\Recipes.Ui\Recipes.Ui.csproj", "{CF25AE3C-1C9E-4519-AF4D-F335038A2EBD}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recipes.Core", "src\Recipes.Core\Recipes.Core.csproj", "{778DDF41-7F5B-4A66-BB5F-9C9C080872CF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recipes.Infrastructure", "src\Recipes.Infrastructure\Recipes.Infrastructure.csproj", "{87E592CE-BC26-4B41-A380-3D30E1F3B60B}"
@@ -24,10 +22,6 @@ Global
 		{678C3569-C215-433C-A5E2-8DE1C120DE15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{678C3569-C215-433C-A5E2-8DE1C120DE15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{678C3569-C215-433C-A5E2-8DE1C120DE15}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CF25AE3C-1C9E-4519-AF4D-F335038A2EBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CF25AE3C-1C9E-4519-AF4D-F335038A2EBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CF25AE3C-1C9E-4519-AF4D-F335038A2EBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CF25AE3C-1C9E-4519-AF4D-F335038A2EBD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{778DDF41-7F5B-4A66-BB5F-9C9C080872CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{778DDF41-7F5B-4A66-BB5F-9C9C080872CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{778DDF41-7F5B-4A66-BB5F-9C9C080872CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
