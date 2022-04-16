@@ -1,4 +1,6 @@
 using MediatR;
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
 using Recipes.Core.Extensions;
 using Recipes.Infrastructure.Entities;
 
@@ -9,15 +11,20 @@ public record GetFromImageUrlRequest(string Url) : IRequest<RecipeImage>;
 public class GetFromImageUrl : IRequestHandler<GetFromImageUrlRequest, RecipeImage>
 {
     private readonly IHttpClientFactory _httpClientFactory;
+    private readonly TelemetryClient _telemetryClient;
 
-    public GetFromImageUrl(IHttpClientFactory httpClientFactory)
+    public GetFromImageUrl(IHttpClientFactory httpClientFactory, TelemetryClient telemetryClient)
     {
         _httpClientFactory = httpClientFactory;
+        _telemetryClient = telemetryClient;
     }
 
     public async Task<RecipeImage> Handle(GetFromImageUrlRequest request, CancellationToken cancellationToken)
     {
+        _telemetryClient.TrackTrace($"Encoded Url: {request.Url}", SeverityLevel.Information);
+        _telemetryClient.TrackTrace($"Decoded Url: {request.Url.DecodeUrl()}", SeverityLevel.Information);
         var client = _httpClientFactory.CreateClient();
+        
         var dataBytes = await client.GetByteArrayAsync(request.Url.DecodeUrl(), cancellationToken);
 
         if (!dataBytes.Any())

@@ -30,11 +30,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Remove="Controllers\WeatherForecastController.cs" />
-      <Compile Remove="WeatherForecast.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Folder Include="obj\Debug\net6.0" />
     </ItemGroup>
 
