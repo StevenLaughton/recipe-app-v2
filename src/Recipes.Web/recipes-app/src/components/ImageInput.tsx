@@ -10,11 +10,11 @@ import { RecipeImage } from '../models/recipe-image';
 
 function ImageInput() {
   const [image, setImage] = useState<RecipeImage | null>(null);
-  const { get, response, loading } = useFetch('images/GetBase64String');
+  const { post, response, loading } = useFetch('images');
 
   const pasteFromClipboard = async (): Promise<void> => {
     const imageUrl = await navigator.clipboard.readText();
-    const recipeImage: RecipeImage = await get(encodeURIComponent(imageUrl));
+    const recipeImage: RecipeImage = await post('getBase64String', { url: imageUrl });
     if (response.ok) setImage(recipeImage);
   };
 
