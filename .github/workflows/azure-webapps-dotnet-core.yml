@@ -82,4 +82,4 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           slot-name: ${{ env.SLOT_NAME }}
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DC7E89E4810E4C8DAC223ACB70A62457}}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_API_PROFILE }}
