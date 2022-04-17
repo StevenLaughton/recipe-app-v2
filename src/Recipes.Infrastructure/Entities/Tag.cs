@@ -1,4 +1,3 @@
-
 namespace Recipes.Infrastructure.Entities;
 
 public class Tag

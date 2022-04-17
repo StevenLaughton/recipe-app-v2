@@ -3,10 +3,12 @@ namespace Recipes.Infrastructure.Entities;
 public class Recipe
 {
     public int Id { get; set; }
-    public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
     public int Portions { get; set; }
     public bool IsVegetarian { get; set; }
-    public RecipeImage Image { get; set; }
+
+    public RecipeImage? Image { get; set; }
     public ICollection<Ingredient> Ingredients { get; set; } = new List<Ingredient>();
-    public ICollection<Tag> Tags { get; set; }
+    public ICollection<Step> Steps { get; set; } = new List<Step>();
+    public ICollection<Tag> Tags { get; set; } = new List<Tag>();
 }

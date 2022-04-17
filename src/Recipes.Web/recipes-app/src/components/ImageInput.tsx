@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import {
   IonButton, IonCol, IonIcon, IonImg, IonLabel, IonRow, IonSpinner,
 } from '@ionic/react';
@@ -6,21 +6,23 @@ import {
   cameraOutline, clipboardOutline, imageOutline, sadOutline,
 } from 'ionicons/icons';
 import { useFetch } from 'use-http';
+import { useFormContext } from 'react-hook-form';
 import { RecipeImage } from '../models/recipe-image';
 
 function ImageInput() {
-  const [image, setImage] = useState<RecipeImage | null>(null);
   const { post, response, loading } = useFetch('images');
+  const { setValue, watch } = useFormContext();
+  const image: string = watch('image').imageData;
 
   const pasteFromClipboard = async (): Promise<void> => {
     const imageUrl = await navigator.clipboard.readText();
     const recipeImage: RecipeImage = await post('getBase64String', { url: imageUrl });
-    if (response.ok) setImage(recipeImage);
+    if (response.ok) setValue('image', recipeImage);
   };
 
   const ImageTemplate = useCallback(() => {
     if (image != null) {
-      return <IonImg src={image.imageData} />;
+      return <IonImg src={image} />;
     }
     if (loading) {
       return <IonSpinner />;

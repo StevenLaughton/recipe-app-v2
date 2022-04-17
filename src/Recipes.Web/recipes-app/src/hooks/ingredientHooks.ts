@@ -192,45 +192,6 @@ function parseIngredient(ingText: string): Ingredient[] {
       }
     }
 
-    // Check for a known unit of measure
-    const firstWordRE = /^(fl(?:uid)?(?:\s+|-)(?:oz|ounces?)|[a-zA-Z.]+)\b(.+)/;
-    const firstWordREMatches = firstWordRE.exec(oIng.text);
-    if (firstWordREMatches) {
-      // const firstWord = firstWordREMatches[1].replace(/\s+/g, ' ');
-      // const remainingDesc = firstWordREMatches[2];
-      // let uom = '';
-      // let uomID = '';
-      // let i = 0;
-
-      // while (i < uomArray.length && !uom) {
-      //   const versions = [
-      //     ...uomArray[i].alternates,
-      //     uomArray[i].id,
-      //     uomArray[i].short,
-      //     uomArray[i].plural,
-      //   ];
-      //   if (versions.includes(firstWord)) {
-      //     uom = firstWord;
-      //     uomID = uomArray[i].id;
-      //   }
-      //   i++;
-      // }
-      //
-      // if (uom) {
-      //   oIng.unitOfMeasureID = uomID;
-      //   if (options?.normalizeUOM) {
-      //     oIng.unitOfMeasure = uomID;
-      //   } else {
-      //     oIng.unitOfMeasure = uom;
-      //   }
-      //   oIng.text = remainingDesc.trim();
-      // }
-    }
-
-    // if (!options?.allowLeadingOf && oIng.text.match(/^of\s+/i)) {
-    //   oIng.text = oIng.text.replace(/^of\s+/i, '');
-    // }
-
     return oIng;
   });
 }

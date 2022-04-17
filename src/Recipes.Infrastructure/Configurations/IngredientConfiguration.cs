@@ -10,7 +10,7 @@ public class IngredientConfiguration : IEntityTypeConfiguration<Ingredient>
     {
         builder.ToTable("Ingredients").HasKey(i => i.Id);
 
-        builder.Property(ingredient => ingredient.Name)
+        builder.Property(ingredient => ingredient.Text)
             .HasMaxLength(256);
 
         builder.Property(ingredient => ingredient.Quantity)

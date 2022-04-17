@@ -12,7 +12,8 @@ builder.AddCommandHandling()
     .ConfigureControllers()
     .AddDataAccess()
     .AddCors()
-    .ConfigureLogging();
+    .ConfigureLogging()
+    .AddAutoMapper();
 
 var app = builder.Build();
 
@@ -28,4 +29,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.UseControllers();
 app.UseCors(CorsPolicies.ApplicationUiPolicy);
+
 app.Run();

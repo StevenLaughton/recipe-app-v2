@@ -5,7 +5,7 @@ import {
   IonHeader,
   IonItem,
   IonLabel,
-  IonListHeader,
+  IonListHeader, IonLoading,
   IonPage,
   IonTitle,
   IonToggle,
@@ -15,6 +15,7 @@ import React, { useMemo } from 'react';
 import {
   useForm, Controller, FormProvider,
 } from 'react-hook-form';
+import { useFetch } from 'use-http';
 import { Recipe } from '../models/recipe';
 import IngredientsInput from '../components/IngredientsInput';
 import AppInput from '../components/AppInput';
@@ -28,21 +29,32 @@ export interface CheckboxChangeEventDetail {
 
 function Add() {
   const defaultValues = useMemo(() => ({
-    id: null,
+    id: 0,
     name: null,
     portions: null,
     isVegetarian: false,
     ingredients: [{ quantity: null, text: '', isGroupHeader: false }],
     steps: [{ text: '', isGroupHeader: false }],
+    image: { id: 0, imageData: null },
+    tags: [],
   } as Recipe), []);
 
   const form = useForm<Recipe>({ defaultValues });
+  const {
+    post, response, loading, error,
+  } = useFetch('recipes');
 
   // eslint-disable-next-line no-console
-  const onSubmit = (data: Recipe) => console.log(data);
+  const onSubmit = async (data: Recipe) => {
+    console.log(data);
+
+    await post('save', { recipe: data });
+    if (!response.ok) console.log(error);
+  };
 
   return (
     <IonPage>
+      <IonLoading isOpen={loading} message="Saving Recipe" />
       <IonHeader>
         <IonToolbar>
           <IonTitle>Add Recipe</IonTitle>
