@@ -21,6 +21,7 @@ import IngredientsInput from '../components/IngredientsInput';
 import AppInput from '../components/AppInput';
 import StepsInput from '../components/StepsInput';
 import ImageInput from '../components/ImageInput';
+import routes from '../models/constants/routes';
 
 export interface CheckboxChangeEventDetail {
   value: any;
@@ -45,7 +46,7 @@ function Add() {
 
   const onSubmit = async (data: Recipe) => {
     await post('save', data);
-    if (response.ok) push('/my-recipes');
+    if (response.ok) push(routes.home);
   };
 
   return (

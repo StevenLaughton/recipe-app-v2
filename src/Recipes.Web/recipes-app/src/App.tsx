@@ -31,6 +31,8 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import routes from './models/constants/routes';
+import View from './pages/View';
 
 setupIonicReact();
 
@@ -59,30 +61,33 @@ function App() {
         <IonTabs>
           <IonRouterOutlet>
             <Provider url={process.env.REACT_APP_PUBLIC_URL} options={globalOptions}>
-              <Route exact path="/my-recipes">
+              <Route exact path={routes.home}>
                 <MyRecipes />
               </Route>
-              <Route exact path="/search">
+              <Route exact path={routes.search}>
                 <Search />
               </Route>
-              <Route path="/add">
+              <Route path={routes.add}>
                 <Add />
               </Route>
+              <Route path={`${routes.view}/:recipeId`}>
+                <View />
+              </Route>
               <Route exact path="/">
-                <Redirect to="/my-recipes" />
+                <Redirect to={routes.home} />
               </Route>
             </Provider>
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
-            <IonTabButton tab="my-recipes" href="/my-recipes">
+            <IonTabButton tab="my-recipes" href={routes.home}>
               <IonIcon icon={readerOutline} />
               <IonLabel>My Recipes</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="search" href="/search">
+            <IonTabButton tab="search" href={routes.search}>
               <IonIcon icon={search} />
               <IonLabel>Search</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="add" href="/add">
+            <IonTabButton tab="add" href={routes.add}>
               <IonIcon icon={add} />
               <IonLabel>Add</IonLabel>
             </IonTabButton>

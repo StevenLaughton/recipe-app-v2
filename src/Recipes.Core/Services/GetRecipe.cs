@@ -1,23 +1,37 @@
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Recipes.Infrastructure;
-using Recipes.Infrastructure.Entities;
+using Recipes.Infrastructure.Dtos;
 
 namespace Recipes.Core.Services;
 
-public record GetRecipeRequest(int Id) : IRequest<Recipe?>;
+public record GetRecipeRequest(int Id) : IRequest<RecipeDto>;
 
-public class GetRecipeHandler : IRequestHandler<GetRecipeRequest, Recipe?>
+public class GetRecipeHandler : IRequestHandler<GetRecipeRequest, RecipeDto>
 {
     private readonly DatabaseContext _context;
+    private readonly IConfigurationProvider _configurationProvider;
 
-    public GetRecipeHandler(DatabaseContext context)
+    public GetRecipeHandler(DatabaseContext context, IMapper mapper)
     {
         _context = context;
+        _configurationProvider = mapper.ConfigurationProvider;
     }
 
-    public async Task<Recipe?> Handle(GetRecipeRequest request, CancellationToken cancellationToken)
+    public async Task<RecipeDto> Handle(GetRecipeRequest request, CancellationToken cancellationToken)
     {
-        return await _context.Recipes.FirstOrDefaultAsync(recipe => recipe!.Id == request.Id, cancellationToken);
+        var dto = await _context.Recipes
+            .AsSplitQuery()
+            .ProjectTo<RecipeDto>(_configurationProvider)
+            .FirstOrDefaultAsync(recipe => recipe.Id == request.Id, cancellationToken);
+
+        if (dto is null)
+        {
+            throw new ArgumentNullException($"Recipe not found with id {request.Id}");
+        }
+
+        return dto;
     }
 }

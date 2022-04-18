@@ -12,12 +12,12 @@ public record GetRecipeListRequest : IRequest<IList<RecipeListItemDto>>;
 public class GetRecipeList : IRequestHandler<GetRecipeListRequest, IList<RecipeListItemDto>>
 {
     private readonly DatabaseContext _context;
-    private readonly IMapper _mapper;
+    private readonly IConfigurationProvider _configurationProvider;
 
     public GetRecipeList(DatabaseContext context, IMapper mapper)
     {
         _context = context;
-        _mapper = mapper;
+        _configurationProvider = mapper.ConfigurationProvider;
     }
 
     public async Task<IList<RecipeListItemDto>> Handle(GetRecipeListRequest request,
@@ -25,7 +25,7 @@ public class GetRecipeList : IRequestHandler<GetRecipeListRequest, IList<RecipeL
     {
         var recipeListItemDtos = await _context.Recipes
             .AsSplitQuery()
-            .ProjectTo<RecipeListItemDto>(_mapper.ConfigurationProvider)
+            .ProjectTo<RecipeListItemDto>(_configurationProvider)
             .ToListAsync(cancellationToken);
 
         return recipeListItemDtos;

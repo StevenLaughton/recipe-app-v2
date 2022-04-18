@@ -1,22 +1,28 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import {
-  IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonImg, IonSpinner,
+  IonCard, IonCardHeader, IonCardTitle, IonImg, useIonRouter,
 } from '@ionic/react';
+import { RecipeListItem } from '../models/recipe-list-item';
+import routes from '../models/constants/routes';
 
-function RecipeCard() {
+function RecipeCard(props: RecipeListItem) {
+  const { name, imageData, recipeId } = props;
+  const { push } = useIonRouter();
+
+  const fallbackIcon = '/assets/icon/fast-food.svg';
   const cardStyle = {
     margin: '10px 10px 5px 5px',
   };
 
+  const viewRecipe = () => {
+    push(`${routes.view}/${recipeId}`);
+  };
+
   return (
-    <IonCard style={cardStyle} button>
-      <IonCardContent>
-        <Suspense fallback={<IonSpinner />}>
-          <IonImg src="/assets/icon/fast-food.svg" />
-        </Suspense>
-      </IonCardContent>
+    <IonCard style={cardStyle} button onClick={viewRecipe}>
+      <IonImg src={imageData ?? fallbackIcon} />
       <IonCardHeader>
-        <IonCardTitle style={{ fontSize: '14px' }}>Card Title</IonCardTitle>
+        <IonCardTitle style={{ fontSize: '16px' }}>{name}</IonCardTitle>
       </IonCardHeader>
     </IonCard>
   );
