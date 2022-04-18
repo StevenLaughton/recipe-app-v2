@@ -7,7 +7,7 @@ import {
   IonTabBar,
   IonTabButton,
   IonTabs,
-  setupIonicReact,
+  setupIonicReact, useIonToast,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { readerOutline, search, add } from 'ionicons/icons';
@@ -35,12 +35,30 @@ import './theme/variables.css';
 setupIonicReact();
 
 function App() {
+  const [present, dismiss] = useIonToast();
+
+  const globalOptions = {
+    interceptors: {
+      request: ({ options }: any) => options,
+      response: async ({ response }: any) => {
+        if (response.status === 400 && response.data.errors) {
+          await present({
+            buttons: [{ text: 'hide', handler: () => dismiss() }],
+            message: (response.data.errors as string[]).join('\n'),
+            duration: 10000,
+          });
+        }
+        return response;
+      },
+    },
+  };
+
   return (
     <IonApp>
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            <Provider url={process.env.REACT_APP_PUBLIC_URL}>
+            <Provider url={process.env.REACT_APP_PUBLIC_URL} options={globalOptions}>
               <Route exact path="/my-recipes">
                 <MyRecipes />
               </Route>

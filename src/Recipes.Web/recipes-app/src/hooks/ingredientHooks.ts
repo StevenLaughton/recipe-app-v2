@@ -129,7 +129,13 @@ function parseIngredient(ingText: string): Ingredient[] {
     .map((ing) => ing.trim());
 
   return arrRaw.map((line) => {
-    const oIng: Ingredient = { quantity: null, text: '', isGroupHeader: false };
+    const oIng: Ingredient = {
+      id: 0,
+      quantity: null,
+      text: '',
+      isGroupHeader: false,
+      recipeId: 0,
+    };
 
     // Check if the first character is numeric.
     const nqResultFirstChar = numericQuantity(line.substring(0, 1));

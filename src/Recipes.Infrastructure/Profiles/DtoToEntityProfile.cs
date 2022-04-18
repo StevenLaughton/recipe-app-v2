@@ -8,10 +8,10 @@ public class DtoToEntityProfile: Profile
 {
     public DtoToEntityProfile()
     {
-        CreateMap<Ingredient, IngredientDto>();
-        CreateMap<Step, StepDto>();
-        CreateMap<RecipeImage, RecipeImageDto>();
-        CreateMap<Tag, TagDto>();
-        CreateMap<Recipe, RecipeDto>();
+        CreateMap<IngredientDto, Ingredient>();
+        CreateMap<StepDto, Step>();
+        CreateMap<RecipeImageDto, RecipeImage>();
+        CreateMap<TagDto, Tag>();
+        CreateMap<RecipeDto, Recipe>();
     }
 }

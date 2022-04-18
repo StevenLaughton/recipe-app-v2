@@ -9,7 +9,7 @@ import {
   IonPage,
   IonTitle,
   IonToggle,
-  IonToolbar,
+  IonToolbar, useIonRouter,
 } from '@ionic/react';
 import React, { useMemo } from 'react';
 import {
@@ -39,17 +39,13 @@ function Add() {
     tags: [],
   } as Recipe), []);
 
+  const { push } = useIonRouter();
   const form = useForm<Recipe>({ defaultValues });
-  const {
-    post, response, loading, error,
-  } = useFetch('recipes');
+  const { post, response, loading } = useFetch('recipes');
 
-  // eslint-disable-next-line no-console
   const onSubmit = async (data: Recipe) => {
-    console.log(data);
-
-    await post('save', { recipe: data });
-    if (!response.ok) console.log(error);
+    await post('save', data);
+    if (response.ok) push('/my-recipes');
   };
 
   return (

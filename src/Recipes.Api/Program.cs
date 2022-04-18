@@ -13,7 +13,8 @@ builder.AddCommandHandling()
     .AddDataAccess()
     .AddCors()
     .ConfigureLogging()
-    .AddAutoMapper();
+    .AddAutoMapper()
+    .AddModelValidation();
 
 var app = builder.Build();
 

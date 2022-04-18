@@ -1,6 +1,8 @@
+using Recipes.Infrastructure.Interfaces;
+
 namespace Recipes.Infrastructure.Entities;
 
-public class Recipe
+public class Recipe : IRecipe
 {
     public int Id { get; set; }
     public string Name { get; set; } = string.Empty;

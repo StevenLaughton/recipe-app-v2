@@ -1,6 +1,4 @@
 using MediatR;
-using Microsoft.ApplicationInsights;
-using Microsoft.ApplicationInsights.DataContracts;
 using Recipes.Core.Extensions;
 using Recipes.Infrastructure.Entities;
 

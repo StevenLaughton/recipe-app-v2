@@ -1,6 +1,5 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Recipes.Api.Constants;
 using Recipes.Core.Services;
 using Recipes.Infrastructure.Dtos;
@@ -43,16 +42,4 @@ public class RecipesController : ControllerBase
 
         return Ok(result);
     }
-
-    [HttpPost(Routes.Default)]
-    public IActionResult Save2([FromBody] Test recipe, CancellationToken cancellationToken)
-    {
-        return Ok(Task.FromResult(1));
-    }
-}
-
-public class Test
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
 }
