@@ -1,13 +1,15 @@
-import React, { ClipboardEvent, KeyboardEvent } from 'react';
+import React, { ClipboardEvent, Fragment, KeyboardEvent } from 'react';
 import { IonTextarea } from '@ionic/react';
 import {
   Controller, FieldValues, useFieldArray, useFormContext,
 } from 'react-hook-form';
 import InputItem from './InputItem';
+import { stepSchema } from '../models/recipe';
+import ErrorMessage from './ErrorMessage';
 
 function StepsInput() {
   const {
-    register, control, getValues, watch,
+    register, control, getValues, watch, formState,
   } = useFormContext();
   const {
     fields, insert, remove, update,
@@ -15,7 +17,7 @@ function StepsInput() {
 
   function insertNewRowIfEnter({ key } : KeyboardEvent, index: number): void {
     if (key.toLowerCase() === 'enter') {
-      insert(index + 1, { value: '' }, { shouldFocus: true });
+      insert(index + 1, stepSchema.getDefault(), { shouldFocus: true });
     }
   }
 
@@ -29,32 +31,34 @@ function StepsInput() {
   return (
     <>
       {fields.map((item: FieldValues, index) => (
-        <InputItem
-          key={item.id}
-          fields={fields}
-          remove={() => remove(index)}
-          setGroupHeader={() => {
-            const currentValue = getValues(`steps.${index}`);
-            update(index, { ...currentValue, isGroupHeader: !currentValue.isGroupHeader });
-          }}
-        >
-          <Controller
-            render={({ field: { onChange, value } }) => (
-              <IonTextarea
+        <Fragment key={item.id}>
+          <InputItem
+            fields={fields}
+            remove={() => remove(index)}
+            setGroupHeader={() => {
+              const currentValue = getValues(`steps.${index}`);
+              update(index, { ...currentValue, isGroupHeader: !currentValue.isGroupHeader });
+            }}
+          >
+            <Controller
+              render={({ field: { onChange, value } }) => (
+                <IonTextarea
                     /* eslint-disable-next-line react/jsx-props-no-spreading */
-                {...register(`steps.${index}.text` as const, { required: true })}
-                autoGrow
-                onIonChange={onChange}
-                value={value}
-                onPaste={(event$) => parseAndInsert(event$, index)}
-                onKeyDown={(event$) => insertNewRowIfEnter(event$, index)}
-                style={{ fontWeight: watch(`steps.${index}.isGroupHeader`) ? 'bold' : 'normal' }}
-              />
-            )}
-            control={control}
-            name={`steps.${index}.text`}
-          />
-        </InputItem>
+                  {...register(`steps.${index}.text` as const)}
+                  autoGrow
+                  onIonChange={onChange}
+                  value={value}
+                  onPaste={(event$) => parseAndInsert(event$, index)}
+                  onKeyDown={(event$) => insertNewRowIfEnter(event$, index)}
+                  style={{ fontWeight: watch(`steps.${index}.isGroupHeader`) ? 'bold' : 'normal' }}
+                />
+              )}
+              control={control}
+              name={`steps.${index}.text`}
+            />
+            <ErrorMessage control={`steps.${index}.text`} state={formState} />
+          </InputItem>
+        </Fragment>
       ))}
     </>
   );

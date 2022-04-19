@@ -69,7 +69,7 @@ function IngredientsInput() {
             render={({ field: { onChange, value } }) => (
               <IonInput
                   /* eslint-disable-next-line react/jsx-props-no-spreading */
-                {...register(`ingredients.${index}.text` as const, { required: true })}
+                {...register(`ingredients.${index}.text` as const)}
                 onIonChange={onChange}
                 value={value}
                 size={100}

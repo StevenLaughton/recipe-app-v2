@@ -18,7 +18,7 @@ function View() {
 
   const IngredientList = useCallback(() => (
     <IonCard>
-      { recipe?.ingredients.map((ingredient: Ingredient) => (
+      {recipe?.ingredients.map((ingredient: Ingredient) => (
         <IonItem>
           <IonText>
             { ingredient.isGroupHeader && <h4>{ ingredient.text }</h4> }
@@ -36,7 +36,7 @@ function View() {
 
   const StepList = useCallback(() => (
     <IonCard>
-      { recipe?.steps.map((step: Step) => (
+      {recipe?.steps.map((step: Step) => (
         <IonItem>
           <IonText>
             { step.isGroupHeader && <h4>{ step.text }</h4> }

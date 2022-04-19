@@ -16,11 +16,13 @@ import {
   useForm, Controller, FormProvider,
 } from 'react-hook-form';
 import { useFetch } from 'use-http';
-import { Recipe } from '../models/recipe';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Recipe, recipeSchema } from '../models/recipe';
 import IngredientsInput from '../components/IngredientsInput';
 import AppInput from '../components/AppInput';
 import StepsInput from '../components/StepsInput';
 import ImageInput from '../components/ImageInput';
+import ErrorMessage from '../components/ErrorMessage';
 import routes from '../models/constants/routes';
 
 export interface CheckboxChangeEventDetail {
@@ -29,19 +31,13 @@ export interface CheckboxChangeEventDetail {
 }
 
 function Add() {
-  const defaultValues = useMemo(() => ({
-    id: 0,
-    name: null,
-    portions: null,
-    isVegetarian: false,
-    ingredients: [{ quantity: null, text: '', isGroupHeader: false }],
-    steps: [{ text: '', isGroupHeader: false }],
-    image: { id: 0, imageData: null },
-    tags: [],
-  } as Recipe), []);
+  const defaultValues = useMemo(() => recipeSchema.getDefaultFromShape(), []);
 
   const { push } = useIonRouter();
-  const form = useForm<Recipe>({ defaultValues });
+  const form = useForm<Recipe>({
+    defaultValues,
+    resolver: yupResolver(recipeSchema),
+  });
   const { post, response, loading } = useFetch('recipes');
 
   const onSubmit = async (data: Recipe) => {
@@ -69,9 +65,11 @@ function Add() {
             <IonCard>
               <IonItem>
                 <AppInput name="name" placeholder="Name" inputmode="text" autoCapitalize="words" />
+                <ErrorMessage control="name" state={form.formState} />
               </IonItem>
               <IonItem>
                 <AppInput name="portions" placeholder="Portions" inputmode="numeric" autoCapitalize="off" />
+                <ErrorMessage control="portions" state={form.formState} />
               </IonItem>
               <IonItem lines="none">
                 <IonLabel>Vegetarian: </IonLabel>

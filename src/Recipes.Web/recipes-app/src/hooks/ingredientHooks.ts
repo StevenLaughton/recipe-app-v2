@@ -131,7 +131,7 @@ function parseIngredient(ingText: string): Ingredient[] {
   return arrRaw.map((line) => {
     const oIng: Ingredient = {
       id: 0,
-      quantity: null,
+      quantity: undefined,
       text: '',
       isGroupHeader: false,
       recipeId: 0,
