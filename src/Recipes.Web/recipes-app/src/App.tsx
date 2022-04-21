@@ -33,6 +33,7 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import routes from './models/constants/routes';
 import View from './pages/View';
+import Edit from './pages/Edit';
 
 setupIonicReact();
 
@@ -72,6 +73,9 @@ function App() {
               </Route>
               <Route path={`${routes.view}/:recipeId`}>
                 <View />
+              </Route>
+              <Route path={`${routes.edit}/:recipeId`}>
+                <Edit />
               </Route>
               <Route exact path="/">
                 <Redirect to={routes.home} />

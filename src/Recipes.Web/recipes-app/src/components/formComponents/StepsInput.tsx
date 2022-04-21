@@ -4,8 +4,8 @@ import {
   Controller, FieldValues, useFieldArray, useFormContext,
 } from 'react-hook-form';
 import InputItem from './InputItem';
-import { stepSchema } from '../models/recipe';
 import ErrorMessage from './ErrorMessage';
+import { stepSchema } from '../../models/recipe';
 
 function StepsInput() {
   const {
@@ -56,7 +56,7 @@ function StepsInput() {
               control={control}
               name={`steps.${index}.text`}
             />
-            <ErrorMessage control={`steps.${index}.text`} state={formState} />
+            <ErrorMessage control={`steps.${index}.text`} state={formState} position="stacked" />
           </InputItem>
         </Fragment>
       ))}

@@ -12,12 +12,17 @@ export const stepSchema = object({
 
 export const ingredientSchema = object({
   id: number().required().default(0),
-  quantity: number().when('isGroupHeader', {
-    is: true,
-    then: (schema) => schema.notRequired(),
-    otherwise: (schema) => schema.required().min(0),
-  }),
-  text: string().required().max(256),
+  quantity: number()
+    .nullable(true)
+    .typeError('quantity must be a number')
+    .when('isGroupHeader', {
+      is: true,
+      then: (schema) => schema.notRequired(),
+      otherwise: (schema) => schema
+        .required('a quantity is required')
+        .min(0, 'quantity must be greater than 0'),
+    }),
+  text: string().required('ingredient is required').max(256),
   isGroupHeader: boolean().default(false),
   recipeId: number().required().default(0),
 });
@@ -40,8 +45,11 @@ export const recipeSchema = object({
   tags: array(),
 }).required();
 
-export interface Recipe extends InferType<typeof recipeSchema> {}
+export interface Recipe extends InferType<typeof recipeSchema> {
+}
 
-export interface Step extends InferType<typeof stepSchema> {}
+export interface Step extends InferType<typeof stepSchema> {
+}
 
-export interface Ingredient extends InferType<typeof ingredientSchema> {}
+export interface Ingredient extends InferType<typeof ingredientSchema> {
+}

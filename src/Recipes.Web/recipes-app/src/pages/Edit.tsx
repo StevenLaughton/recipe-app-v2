@@ -1,32 +1,37 @@
-import { useIonRouter } from '@ionic/react';
-import React, { useMemo } from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useEffect, useMemo } from 'react';
+import { useParams } from 'react-router';
 import { useFetch } from 'use-http';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Recipe, recipeSchema } from '../models/recipe';
-import routes from '../models/constants/routes';
 import AppPage from '../components/AppPage';
 import RecipeForm from '../components/formComponents/RecipeForm';
 
-function Add() {
+type RouteParams = {
+  recipeId: string;
+};
+
+function Edit() {
   const defaultValues = useMemo(() => recipeSchema.getDefaultFromShape(), []);
-  const { push } = useIonRouter();
-  const { post, response, loading } = useFetch('recipes');
+  const { recipeId } = useParams<RouteParams>();
+  const { data: recipe, loading } = useFetch<Recipe>(`recipes/get/id?id=${recipeId}`, {}, [recipeId]);
   const form = useForm<Recipe>({
     defaultValues,
     resolver: yupResolver(recipeSchema),
   });
 
+  useEffect(() => {
+    form.reset(recipe);
+  }, [recipe]);
+
   const onSubmit = async (data: Recipe) => {
-    await post('save', data);
-    if (response.ok) push(routes.home);
+    console.log(data);
   };
 
   return (
-    <AppPage title="Add Recipe" isLoading={loading} loadingMessage="Saving Recipe">
+    <AppPage title={recipe?.name} isLoading={loading}>
       <RecipeForm form={form} onSubmit={onSubmit} />
     </AppPage>
   );
 }
-
-export default Add;
+export default Edit;

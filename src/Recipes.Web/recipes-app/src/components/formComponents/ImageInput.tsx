@@ -7,7 +7,7 @@ import {
 } from 'ionicons/icons';
 import { useFetch } from 'use-http';
 import { useFormContext } from 'react-hook-form';
-import { RecipeImage } from '../models/recipe-image';
+import { RecipeImage } from '../../models/recipe-image';
 
 function ImageInput() {
   const { post, response, loading } = useFetch('images');

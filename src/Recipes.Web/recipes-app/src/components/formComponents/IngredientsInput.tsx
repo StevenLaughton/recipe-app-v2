@@ -4,13 +4,14 @@ import {
   Controller, FieldValues, useFieldArray, useFormContext,
 } from 'react-hook-form';
 import InputItem from './InputItem';
-import { Ingredient } from '../models/recipe';
-import mimeTypes from '../models/constants/mimeTypes';
-import parseIngredients from '../hooks/ingredientHooks';
+import ErrorMessage from './ErrorMessage';
+import mimeTypes from '../../models/constants/mimeTypes';
+import { Ingredient } from '../../models/recipe';
+import parseIngredients from '../../hooks/ingredientHooks';
 
 function IngredientsInput() {
   const {
-    register, control, getValues, watch,
+    register, control, getValues, watch, formState,
   } = useFormContext();
   const {
     fields, insert, remove, update,
@@ -81,6 +82,8 @@ function IngredientsInput() {
             control={control}
             name={`ingredients.${index}.text`}
           />
+          <ErrorMessage control={`ingredients.${index}.quantity`} state={formState} />
+          <ErrorMessage control={`ingredients.${index}.text`} state={formState} />
         </InputItem>
       ))}
     </>
