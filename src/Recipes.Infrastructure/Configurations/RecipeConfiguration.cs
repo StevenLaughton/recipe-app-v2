@@ -12,7 +12,7 @@ public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
 
         builder.Property(recipe => recipe.Name)
             .HasMaxLength(256);
-
+        
         builder.HasOne(recipe => recipe.Image)
             .WithOne(image => image.Recipe)
             .HasForeignKey<RecipeImage>(image => image.RecipeId);
@@ -20,6 +20,10 @@ public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
         builder.HasMany(recipe => recipe.Ingredients)
             .WithOne(ingredient => ingredient.Recipe)
             .HasForeignKey(ingredient => ingredient.RecipeId);
+
+        builder.HasMany(recipe => recipe.Steps)
+            .WithOne(step => step.Recipe)
+            .HasForeignKey(step => step.RecipeId);
 
         builder.HasMany(recipe => recipe.Tags)
             .WithMany(tag => tag.Recipes);

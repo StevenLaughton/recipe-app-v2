@@ -42,4 +42,12 @@ public class RecipesController : ControllerBase
 
         return Ok(result);
     }
+    
+    [HttpPut(Routes.Default)]
+    public async Task<IActionResult> Update([FromBody] RecipeDto recipe, CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(new UpdateRecipeRequest(recipe), cancellationToken);
+
+        return Ok(result);
+    }
 }

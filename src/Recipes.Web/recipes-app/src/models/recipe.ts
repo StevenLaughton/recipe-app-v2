@@ -5,7 +5,7 @@ import { recipeImageSchema } from './recipe-image';
 
 export const stepSchema = object({
   id: number().required().default(0),
-  text: string().required('step is required').max(256),
+  text: string().required('step is required').max(512),
   isGroupHeader: boolean().default(false),
   recipeId: number(),
 });

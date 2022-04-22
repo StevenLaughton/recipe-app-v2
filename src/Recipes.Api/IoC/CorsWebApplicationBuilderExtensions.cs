@@ -15,7 +15,7 @@ public static class CorsWebApplicationBuilderExtensions
     {
         options.AddPolicy(name: CorsPolicies.ApplicationUiPolicy, builder => builder
             .AllowAnyOrigin()
-            .WithMethods(HttpMethods.Get, HttpMethods.Post, HttpMethods.Delete)
+            .WithMethods(HttpMethods.Get, HttpMethods.Post, HttpMethods.Put, HttpMethods.Options, HttpMethods.Delete)
             .AllowAnyHeader()
         );
     }
