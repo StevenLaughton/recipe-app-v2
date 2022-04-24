@@ -1,15 +1,16 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   IonButton, IonButtons,
   IonCard, IonIcon, IonItem,
-  IonLabel, IonListHeader, IonText,
+  IonLabel, IonListHeader, IonText, useIonAlert,
 } from '@ionic/react';
 import { useParams } from 'react-router';
 import { useFetch } from 'use-http';
-import { createOutline } from 'ionicons/icons';
+import { createOutline, trashOutline } from 'ionicons/icons';
 import { Ingredient, Recipe, Step } from '../models/recipe';
 import routes from '../models/constants/routes';
 import AppPage from '../components/AppPage';
+import responseRoutingHook from '../hooks/responseRoutingHook';
 
 type RouteParams = {
   recipeId: string;
@@ -17,11 +18,38 @@ type RouteParams = {
 
 function View() {
   const { recipeId } = useParams<RouteParams>();
-  const { data: recipe, loading } = useFetch<Recipe>(`recipes/get/id?id=${recipeId}`, {}, [recipeId]);
+  const {
+    get, del, response, loading,
+  } = useFetch<Recipe>('recipes');
+  const { ifResponseOkNavigate } = responseRoutingHook(routes.home);
+  const [recipe, setRecipe] = useState<Recipe>();
+  const [present] = useIonAlert();
+
+  useEffect(() => {
+    get(`id?id=${recipeId}`)
+      .then((loadedRecipe: Recipe) => {
+        if (response.ok) setRecipe(loadedRecipe);
+      });
+  }, [recipeId]);
+
+  const deleteRecipe = async () => {
+    await del(`id?id=${recipeId}`);
+    ifResponseOkNavigate(response);
+  };
+  const showAreYouSure = async () => {
+    await present({
+      header: 'Are you sure!',
+      message: `Delete ${recipe?.name}?`,
+      buttons: [
+        'Cancel',
+        { text: 'Ok', handler: deleteRecipe },
+      ],
+    });
+  };
 
   const IngredientList = useCallback(() => (
     <IonCard>
-      {recipe?.ingredients.map((ingredient: Ingredient) => (
+      { recipe?.ingredients.map((ingredient: Ingredient) => (
         <IonItem key={ingredient.id}>
           <IonText>
             { ingredient.isGroupHeader && <h4>{ ingredient.text }</h4> }
@@ -39,7 +67,7 @@ function View() {
 
   const StepList = useCallback(() => (
     <IonCard>
-      {recipe?.steps.map((step: Step) => (
+      { recipe?.steps.map((step: Step) => (
         <IonItem key={step.id}>
           <IonText>
             { step.isGroupHeader && <h4>{ step.text }</h4> }
@@ -60,13 +88,16 @@ function View() {
       title={recipe?.name}
       isLoading={loading}
       loadingMessage="Loading Recipe"
-      toolbarActions={(
-        <IonButtons slot="end">
+      toolbarButtons={(
+        <IonButtons slot="end" collapse>
           <IonButton routerLink={`${routes.edit}/${recipeId}`}>
             <IonIcon slot="icon-only" icon={createOutline} />
           </IonButton>
+          <IonButton onClick={showAreYouSure}>
+            <IonIcon slot="icon-only" icon={trashOutline} />
+          </IonButton>
         </IonButtons>
-)}
+      )}
     >
       <IonListHeader>
         <IonLabel>Ingredients</IonLabel>

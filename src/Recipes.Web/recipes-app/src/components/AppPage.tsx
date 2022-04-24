@@ -8,27 +8,28 @@ interface Props{
   isLoading?: boolean,
   loadingMessage?: string,
   children?: ReactNode,
-  toolbarActions?: ReactNode,
+  toolbarButtons?: ReactNode,
 }
 interface AppPageProps extends Partial<Props>{
   title: string | undefined,
 }
 
 function AppPage({
-  title, isLoading = false, loadingMessage = '', children, toolbarActions,
+  title, isLoading = false, loadingMessage = '', children, toolbarButtons,
 }: AppPageProps) {
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonTitle>{ title }</IonTitle>
+          {toolbarButtons}
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen color="light">
         <IonHeader collapse="condense">
           <IonToolbar color="light">
             <IonTitle size="large">{ title }</IonTitle>
-            {toolbarActions}
+            {toolbarButtons}
           </IonToolbar>
         </IonHeader>
         <IonLoading isOpen={isLoading} message={loadingMessage} />

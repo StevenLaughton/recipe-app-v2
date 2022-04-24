@@ -1,7 +1,8 @@
 import {
-  array, boolean, InferType, number, object, string,
+  array, boolean, InferType, mixed, number, object, string,
 } from 'yup';
 import { recipeImageSchema } from './recipe-image';
+import Fare from './constants/fare';
 
 export const stepSchema = object({
   id: number().required().default(0),
@@ -35,6 +36,10 @@ export const recipeSchema = object({
     .typeError('portions must be a number')
     .min(1),
   isVegetarian: boolean().default(false),
+  fare: mixed<Fare>()
+    .oneOf(['food', 'drink'])
+    .required()
+    .default('food'),
   image: recipeImageSchema.notRequired(),
   ingredients: array().of(ingredientSchema)
     .default([ingredientSchema.getDefaultFromShape()])

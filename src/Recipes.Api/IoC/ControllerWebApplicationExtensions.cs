@@ -15,6 +15,7 @@ public static class ControllerWebApplicationExtensions
             {
                 options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
                 options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
             })
             .ConfigureApiBehaviorOptions(options =>
                 {
@@ -31,7 +32,7 @@ public static class ControllerWebApplicationExtensions
                         });
                     };
                 })
-                .AddFluentValidation(options =>
+            .AddFluentValidation(options =>
                 options.RegisterValidatorsFromAssemblyContaining<GetFromImageUrlRequestValidator>());
 
         return builder;

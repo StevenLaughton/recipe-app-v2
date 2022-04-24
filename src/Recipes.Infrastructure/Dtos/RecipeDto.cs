@@ -1,3 +1,4 @@
+using Recipes.Infrastructure.Enums;
 using Recipes.Infrastructure.Interfaces;
 
 namespace Recipes.Infrastructure.Dtos;
@@ -8,6 +9,8 @@ public class RecipeDto: IRecipe
     public string Name { get; set; } = null!;
     public int Portions { get; set; }
     public bool IsVegetarian { get; set; }
+    public Fare Fare { get; set; }
+
 
     public RecipeImageDto? Image { get; set; }
     

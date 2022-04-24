@@ -3,11 +3,11 @@ import { useParams } from 'react-router';
 import { useFetch } from 'use-http';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useIonRouter } from '@ionic/react';
 import { Recipe, recipeSchema } from '../models/recipe';
 import AppPage from '../components/AppPage';
 import RecipeForm from '../components/formComponents/RecipeForm';
 import routes from '../models/constants/routes';
+import responseRoutingHook from '../hooks/responseRoutingHook';
 
 type RouteParams = {
   recipeId: string;
@@ -16,11 +16,11 @@ type RouteParams = {
 function Edit() {
   const defaultValues = useMemo(() => recipeSchema.getDefaultFromShape(), []);
   const { recipeId } = useParams<RouteParams>();
-  const { push } = useIonRouter();
   const {
-    put, response, loading: saving, cache,
+    put, response, loading: saving,
   } = useFetch('recipes');
-  const { data: recipe, loading } = useFetch<Recipe>(`recipes/get/id?id=${recipeId}`, {}, [recipeId]);
+  const { ifResponseOkNavigate } = responseRoutingHook(`${routes.view}/${recipeId}`);
+  const { data: recipe, loading } = useFetch<Recipe>(`recipes/id?id=${recipeId}`, {}, [recipeId]);
 
   const form = useForm<Recipe>({
     defaultValues,
@@ -33,10 +33,7 @@ function Edit() {
 
   const onSubmit = async (data: Recipe) => {
     await put('update', data);
-    if (response.ok) {
-      cache.clear();
-      push(`${routes.view}/${recipeId}`);
-    }
+    ifResponseOkNavigate(response);
   };
 
   return (

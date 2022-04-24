@@ -4,10 +4,11 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Recipes.Infrastructure;
 using Recipes.Infrastructure.Dtos;
+using Recipes.Infrastructure.Enums;
 
 namespace Recipes.Core.Services;
 
-public record GetRecipeListRequest : IRequest<IList<RecipeListItemDto>>;
+public record GetRecipeListRequest(Fare Fare) : IRequest<IList<RecipeListItemDto>>;
 
 public class GetRecipeList : IRequestHandler<GetRecipeListRequest, IList<RecipeListItemDto>>
 {
@@ -25,6 +26,7 @@ public class GetRecipeList : IRequestHandler<GetRecipeListRequest, IList<RecipeL
     {
         var recipeListItemDtos = await _context.Recipes
             .AsSplitQuery()
+            .Where(recipe => recipe.Fare == request.Fare)
             .ProjectTo<RecipeListItemDto>(_configurationProvider)
             .ToListAsync(cancellationToken);
 

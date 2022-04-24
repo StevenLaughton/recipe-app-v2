@@ -9,6 +9,7 @@ import IngredientsInput from './IngredientsInput';
 import StepsInput from './StepsInput';
 import ImageInput from './ImageInput';
 import { Recipe } from '../../models/recipe';
+import FareSegment from '../FareSegment';
 
 export interface CheckboxChangeEventDetail {
   value: any;
@@ -39,14 +40,22 @@ function RecipeForm({ form, onSubmit }:Props) {
             <Controller
               render={({ field: { onChange, value } }) => (
                 <IonToggle
-                  onIonChange={(e: CustomEvent<CheckboxChangeEventDetail>) => {
-                    onChange(e?.detail.checked);
-                  }}
+                  onIonChange={(e: any) => onChange(e?.detail.checked)}
                   checked={value}
                   color="success"
                 />
               )}
               name="isVegetarian"
+              control={form.control}
+            />
+          </IonItem>
+          <IonItem lines="none">
+            <IonLabel>Vegetarian: </IonLabel>
+            <Controller
+              render={({ field: { onChange, value } }) => (
+                <FareSegment value={value} onChange={onChange} />
+              )}
+              name="fare"
               control={form.control}
             />
           </IonItem>

@@ -1,3 +1,4 @@
+using Recipes.Infrastructure.Enums;
 using Recipes.Infrastructure.Interfaces;
 
 namespace Recipes.Infrastructure.Entities;
@@ -8,6 +9,7 @@ public class Recipe : IRecipe
     public string Name { get; set; } = string.Empty;
     public int Portions { get; set; }
     public bool IsVegetarian { get; set; }
+    public Fare Fare { get; set; }
 
     public RecipeImage? Image { get; set; }
     public ICollection<Ingredient> Ingredients { get; set; } = new List<Ingredient>();
