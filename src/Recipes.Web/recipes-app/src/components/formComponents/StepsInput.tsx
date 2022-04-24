@@ -45,9 +45,10 @@ function StepsInput() {
                 <IonTextarea
                     /* eslint-disable-next-line react/jsx-props-no-spreading */
                   {...register(`steps.${index}.text` as const)}
-                  autoGrow
                   onIonChange={onChange}
                   value={value}
+                  rows={1}
+                  autoGrow
                   onPaste={(event$) => parseAndInsert(event$, index)}
                   onKeyDown={(event$) => insertNewRowIfEnter(event$, index)}
                   style={{ fontWeight: watch(`steps.${index}.isGroupHeader`) ? 'bold' : 'normal' }}

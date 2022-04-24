@@ -49,7 +49,7 @@ function ImageInput() {
         <ImageTemplate />
       </IonCol>
       <IonCol size="7">
-        <IonButton color="primary" size="small" onClick={pasteFromClipboard}>
+        <IonButton color="primary" size="small" onClick={pasteFromClipboard} className="ion-text-wrap">
           <IonIcon icon={clipboardOutline} slot="start" />
           Paste From Clipboard
         </IonButton>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonInput } from '@ionic/react';
+import { IonTextarea } from '@ionic/react';
 import {
   Controller, FieldValues, useFieldArray, useFormContext,
 } from 'react-hook-form';
@@ -24,7 +24,7 @@ function IngredientsInput() {
   }
 
   // eslint-disable-next-line max-len
-  function parseAndInsert(event: React.ClipboardEvent<HTMLIonInputElement>, start: number): void {
+  function parseAndInsert(event: React.ClipboardEvent<HTMLIonTextareaElement>, start: number): void {
     event.stopPropagation();
     remove(start);
 
@@ -51,7 +51,7 @@ function IngredientsInput() {
         >
           <Controller
             render={({ field: { onChange, value } }) => (
-              <IonInput
+              <IonTextarea
                   /* eslint-disable-next-line react/jsx-props-no-spreading */
                 {...register(`ingredients.${index}.quantity` as const)}
                 onIonChange={onChange}
@@ -59,7 +59,8 @@ function IngredientsInput() {
                 inputmode="numeric"
                 onPaste={(event$) => parseAndInsert(event$, index)}
                 onKeyDown={(event$) => insertNewRowIfEnter(event$, index)}
-                size={10}
+                rows={1}
+                autoGrow
                 style={{ textAlign: 'end', fontWeight: watch(`ingredients.${index}.isGroupHeader`) ? 'bold' : 'normal' }}
               />
             )}
@@ -68,15 +69,16 @@ function IngredientsInput() {
           />
           <Controller
             render={({ field: { onChange, value } }) => (
-              <IonInput
+              <IonTextarea
                   /* eslint-disable-next-line react/jsx-props-no-spreading */
                 {...register(`ingredients.${index}.text` as const)}
                 onIonChange={onChange}
                 value={value}
-                size={100}
+                rows={1}
+                autoGrow
                 onPaste={(event$) => parseAndInsert(event$, index)}
                 onKeyDown={(event$) => insertNewRowIfEnter(event$, index)}
-                style={{ flexGrow: 6, fontWeight: watch(`ingredients.${index}.isGroupHeader`) ? 'bold' : 'normal' }}
+                style={{ flexGrow: 4, fontWeight: watch(`ingredients.${index}.isGroupHeader`) ? 'bold' : 'normal' }}
               />
             )}
             control={control}
