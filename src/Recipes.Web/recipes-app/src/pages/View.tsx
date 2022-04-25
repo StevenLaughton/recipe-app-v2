@@ -2,7 +2,8 @@ import React, { useCallback, useEffect, useState } from 'react';
 import {
   IonButton, IonButtons,
   IonCard, IonIcon, IonItem,
-  IonLabel, IonListHeader, IonText, useIonAlert,
+  IonLabel, IonListHeader,
+  IonText, useIonAlert,
 } from '@ionic/react';
 import { useParams } from 'react-router';
 import { useFetch } from 'use-http';
@@ -11,6 +12,7 @@ import { Ingredient, Recipe, Step } from '../models/recipe';
 import routes from '../models/constants/routes';
 import AppPage from '../components/AppPage';
 import responseRoutingHook from '../hooks/responseRoutingHook';
+import PortionSelect from '../components/PortionSelect';
 
 type RouteParams = {
   recipeId: string;
@@ -23,6 +25,7 @@ function View() {
   } = useFetch<Recipe>('recipes');
   const { ifResponseOkNavigate } = responseRoutingHook(routes.home);
   const [recipe, setRecipe] = useState<Recipe>();
+  const [multiplier, setMultiplier] = useState<number>(1);
   const [present] = useIonAlert();
 
   useEffect(() => {
@@ -56,14 +59,14 @@ function View() {
             { !ingredient.isGroupHeader
               && (
                 <span>
-                  { `${ingredient?.quantity} ${ingredient.text}` }
+                  { `${multiplier * (ingredient?.quantity ?? 1)} ${ingredient.text}` }
                 </span>
               ) }
           </IonText>
         </IonItem>
       )) }
     </IonCard>
-  ), [recipe]);
+  ), [recipe, multiplier]);
 
   const StepList = useCallback(() => (
     <IonCard>
@@ -101,6 +104,7 @@ function View() {
     >
       <IonListHeader>
         <IonLabel>Ingredients</IonLabel>
+        <PortionSelect recipePortions={recipe?.portions ?? 1} setMultiplier={setMultiplier} />
       </IonListHeader>
       <IngredientList />
       <IonListHeader>

@@ -28,7 +28,7 @@ function MyRecipes() {
       <IonGrid>
         <IonRow>
           <IonLoading isOpen={loading} message="Loading Recipes" />
-          { recipeListItems.map((item: RecipeListItem) => (
+          { recipeListItems?.map((item: RecipeListItem) => (
             <IonCol key={item.recipeId} size="6" size-sm="4" size-md="3" size-lg="2" size-xl="1">
               {/* eslint-disable-next-line react/jsx-props-no-spreading */}
               <RecipeCard {...item} />
