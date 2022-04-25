@@ -27,6 +27,7 @@ public class GetRecipeList : IRequestHandler<GetRecipeListRequest, IList<RecipeL
         var recipeListItemDtos = await _context.Recipes
             .AsSplitQuery()
             .Where(recipe => recipe.Fare == request.Fare)
+            .OrderBy(recipe => recipe.Name)
             .ProjectTo<RecipeListItemDto>(_configurationProvider)
             .ToListAsync(cancellationToken);
 
