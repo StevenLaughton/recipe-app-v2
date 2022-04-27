@@ -16,6 +16,7 @@ function RecipeCard(props: RecipeListItem) {
   const imageStyle = {
     aspectRatio: '1',
     objectFit: 'cover',
+    width: '100%',
   };
 
   return (

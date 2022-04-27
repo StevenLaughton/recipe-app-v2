@@ -5,10 +5,10 @@ import Fare from '../models/constants/fare';
 function FareSegment({ onChange, value }: { value: Fare, onChange: (v: Fare) => void }) {
   return (
     <IonSegment value={value} onIonChange={(e: any) => onChange(e.detail.value)} color="medium">
-      <IonSegmentButton value="food">
+      <IonSegmentButton value="Food">
         <IonLabel>Food</IonLabel>
       </IonSegmentButton>
-      <IonSegmentButton value="drink">
+      <IonSegmentButton value="Drink">
         <IonLabel>Drink</IonLabel>
       </IonSegmentButton>
     </IonSegment>
