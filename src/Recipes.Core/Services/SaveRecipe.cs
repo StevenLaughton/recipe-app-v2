@@ -23,6 +23,12 @@ public class SaveRecipe : IRequestHandler<SaveRecipeRequest, int>
     {
         var entity = _mapper.Map<RecipeDto, Recipe>(request.Recipe);
         
+        if (request.Recipe.Image is not null)
+        {
+            var image = _mapper.Map<RecipeImageDto, RecipeImage>(request.Recipe.Image);
+            entity.Image = image;
+        }
+        
         await _context.Recipes.AddAsync(entity, cancellationToken);
         var saved = await _context.SaveChangesAsync(cancellationToken);
         
