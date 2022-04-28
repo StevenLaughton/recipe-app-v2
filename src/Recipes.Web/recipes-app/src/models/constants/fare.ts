@@ -1,3 +1,3 @@
-type Fare = 'food' | 'drink';
+type Fare = 'Food' | 'Drink';
 
 export default Fare;

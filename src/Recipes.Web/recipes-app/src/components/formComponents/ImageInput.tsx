@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import {
-  IonButton, IonCol, IonIcon, IonImg, IonLabel, IonRow, IonSpinner,
+  IonButton, IonCol, IonIcon, IonLabel, IonRow, IonSpinner,
 } from '@ionic/react';
 import {
   cameraOutline, clipboardOutline, imageOutline, sadOutline,
@@ -8,6 +8,7 @@ import {
 import { useFetch } from 'use-http';
 import { useFormContext } from 'react-hook-form';
 import { RecipeImage } from '../../models/recipe-image';
+import AppImage from '../AppImage';
 
 function ImageInput() {
   const { post, response, loading } = useFetch('images');
@@ -22,7 +23,7 @@ function ImageInput() {
 
   const ImageTemplate = useCallback(() => {
     if (image != null) {
-      return <IonImg src={image} />;
+      return <AppImage imageData={image} />;
     }
     if (loading) {
       return <IonSpinner />;

@@ -4,24 +4,17 @@ import {
 } from '@ionic/react';
 import { RecipeListItem } from '../models/recipe-list-item';
 import routes from '../models/constants/routes';
+import AppImage from './AppImage';
 
 function RecipeCard(props: RecipeListItem) {
   const { name, imageData, recipeId } = props;
-
-  const fallbackIcon = '/assets/icon/fast-food.svg';
   const cardStyle = {
     margin: '10px 10px 5px 5px',
   };
 
-  const imageStyle = {
-    aspectRatio: '1',
-    objectFit: 'cover',
-    width: '100%',
-  };
-
   return (
     <IonCard style={cardStyle} button routerLink={`${routes.view}/${recipeId}`}>
-      <img src={imageData ?? fallbackIcon} alt="img" style={imageStyle as any} />
+      <AppImage imageData={imageData} />
       <IonCardHeader>
         <IonCardTitle style={{ fontSize: '16px' }}>{name}</IonCardTitle>
       </IonCardHeader>

@@ -1,9 +1,9 @@
 using AutoMapper;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Recipes.Infrastructure;
 using Recipes.Infrastructure.Dtos;
 using Recipes.Infrastructure.Entities;
+using Recipes.Infrastructure.Queries;
 
 namespace Recipes.Core.Services;
 
@@ -22,14 +22,16 @@ public class UpdateRecipe : IRequestHandler<UpdateRecipeRequest, bool>
 
     public async Task<bool> Handle(UpdateRecipeRequest request, CancellationToken cancellationToken)
     {
-        var entity = await _context.Recipes
-            .Include(recipe => recipe.Image)
-            .Include(recipe => recipe.Ingredients)
-            .Include(recipe => recipe.Steps)
-            .FirstAsync(recipe => recipe.Id == request.RecipeDto.Id, cancellationToken);
+        var entity = await _context.GetRecipeById(request.RecipeDto.Id);
 
         entity = _mapper.Map(request.RecipeDto, entity);
 
+        if (request.RecipeDto.Image is not null)
+        {
+            var image = _mapper.Map<RecipeImageDto, RecipeImage>(request.RecipeDto.Image);
+            entity.Image = image;
+        }
+        
         entity.Tags = new List<Tag>();
         
         _context.Recipes.Update(entity);

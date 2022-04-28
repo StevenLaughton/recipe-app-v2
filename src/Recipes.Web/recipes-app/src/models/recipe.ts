@@ -37,9 +37,9 @@ export const recipeSchema = object({
     .min(1),
   isVegetarian: boolean().default(false),
   fare: mixed<Fare>()
-    .oneOf(['food', 'drink'])
+    .oneOf(['Food', 'Drink'])
     .required()
-    .default('food'),
+    .default('Food'),
   image: recipeImageSchema.notRequired(),
   ingredients: array().of(ingredientSchema)
     .default([ingredientSchema.getDefaultFromShape()])

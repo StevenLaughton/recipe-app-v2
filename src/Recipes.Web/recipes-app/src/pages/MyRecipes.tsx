@@ -10,7 +10,7 @@ import Fare from '../models/constants/fare';
 import FareSegment from '../components/FareSegment';
 
 function MyRecipes() {
-  const [fare, setFare] = useState<Fare>('food');
+  const [fare, setFare] = useState<Fare>('Food');
   const { data: recipeListItems = [], loading } = useFetch(`recipes/getList?fare=${fare}`, {}, [fare]);
 
   return (

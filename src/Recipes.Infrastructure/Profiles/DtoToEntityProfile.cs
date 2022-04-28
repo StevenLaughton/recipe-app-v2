@@ -4,7 +4,7 @@ using Recipes.Infrastructure.Entities;
 
 namespace Recipes.Infrastructure.Profiles;
 
-public class DtoToEntityProfile: Profile
+public class DtoToEntityProfile : Profile
 {
     public DtoToEntityProfile()
     {
@@ -12,6 +12,9 @@ public class DtoToEntityProfile: Profile
         CreateMap<StepDto, Step>();
         CreateMap<RecipeImageDto, RecipeImage>();
         CreateMap<TagDto, Tag>();
-        CreateMap<RecipeDto, Recipe>();
+        CreateMap<RecipeDto, Recipe>()
+            .ForMember(c => c.Image, o => o.Ignore())
+            .ForMember(c => c.Ingredients, o => o.MapFrom(s => s.Ingredients))
+            .ForMember(c => c.Steps, o => o.MapFrom(s => s.Steps));
     }
 }
