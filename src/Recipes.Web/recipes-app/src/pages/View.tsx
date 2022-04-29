@@ -29,7 +29,7 @@ function View() {
   const [present] = useIonAlert();
 
   useEffect(() => {
-    get(`id?id=${recipeId}`)
+    get(`id?id=${recipeId}&includeImage=false`)
       .then((loadedRecipe: Recipe) => {
         if (response.ok) setRecipe(loadedRecipe);
       });

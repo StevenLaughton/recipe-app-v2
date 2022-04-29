@@ -7,7 +7,7 @@ using Recipes.Infrastructure.Dtos;
 
 namespace Recipes.Core.Services;
 
-public record GetRecipeRequest(int Id) : IRequest<RecipeDto>;
+public record GetRecipeRequest(int Id, bool IncludeImage) : IRequest<RecipeDto>;
 
 public class GetRecipeHandler : IRequestHandler<GetRecipeRequest, RecipeDto>
 {
@@ -24,12 +24,19 @@ public class GetRecipeHandler : IRequestHandler<GetRecipeRequest, RecipeDto>
     {
         var dto = await _context.Recipes
             .AsSplitQuery()
+            .AsNoTracking()
             .ProjectTo<RecipeDto>(_configurationProvider)
             .FirstOrDefaultAsync(recipe => recipe.Id == request.Id, cancellationToken);
 
         if (dto is null)
         {
             throw new ArgumentNullException($"Recipe not found with id {request.Id}");
+        }
+
+        // This should be changed to not get from the database at all, but that will be done later
+        if (!request.IncludeImage)
+        {
+            dto.Image = null;
         }
 
         return dto;

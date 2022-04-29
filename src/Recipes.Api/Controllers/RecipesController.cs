@@ -29,9 +29,9 @@ public class RecipesController : ControllerBase
 
     [HttpGet(Routes.Id)]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Recipe))]
-    public async Task<IActionResult> Get(int id, CancellationToken cancellationToken)
+    public async Task<IActionResult> Get(int id,[FromQuery] bool includeImage, CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(new GetRecipeRequest(id), cancellationToken);
+        var result = await _mediator.Send(new GetRecipeRequest(id, includeImage), cancellationToken);
 
         return Ok(result);
     }
