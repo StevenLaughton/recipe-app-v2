@@ -1,19 +1,19 @@
-Recipes.Api/bin
-Recipes.Api/obj
+~Recipes.Api/bin
+~Recipes.Api/obj
 
-Recipes.Core/bin
-Recipes.Core/obj
+~Recipes.Core/bin
+~Recipes.Core/obj
 
-Recipes.Infrastructure/bin
-Recipes.Infrastructure/obj
+~Recipes.Infrastructure/bin
+~Recipes.Infrastructure/obj
 
-Recipes.Web/bin
-Recipes.Web/obj
+~Recipes.Web/bin
+~Recipes.Web/obj
 
-Recipes.Azure/Recipes.Azure/bin
-Recipes.Azure/Recipes.Azure/obj
+~Recipes.Azure/Recipes.Azure/bin
+~Recipes.Azure/Recipes.Azure/obj
 
-Recipes.Api/appsettings.Development.json
+~Recipes.Api/appsettings.Development.json
 # Ignore Mac system files
 .DS_store
 
