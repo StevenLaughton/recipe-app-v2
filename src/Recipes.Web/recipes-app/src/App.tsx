@@ -34,7 +34,6 @@ import './theme/variables.css';
 import routes from './models/constants/routes';
 import View from './pages/View';
 import Edit from './pages/Edit';
-import SignInButton from './components/SignInButton';
 
 setupIonicReact();
 
@@ -95,9 +94,6 @@ function App() {
             <IonTabButton tab="add" href={routes.add}>
               <IonIcon icon={add} />
               <IonLabel>Add</IonLabel>
-            </IonTabButton>
-            <IonTabButton>
-              <SignInButton />
             </IonTabButton>
           </IonTabBar>
         </IonTabs>

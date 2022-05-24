@@ -28,7 +28,10 @@ public class AddRecipe : IRequestHandler<AddRecipeRequest, int>
 
         if (request.Recipe.Image is not null)
         {
-            var imageUrl = await _azureBlobService.UploadBlobAsync(request.Recipe.Image, request.Recipe.Image.FileName, cancellationToken);
+            using var stream = new MemoryStream();
+            await request.Recipe.Image.CopyToAsync(stream, cancellationToken);
+            stream.Position = 0;
+            var imageUrl = await _azureBlobService.UploadBlobAsync(stream, request.Recipe.Image.FileName, cancellationToken);
             entity.ImageUrl = imageUrl;
         }
         

@@ -34,7 +34,10 @@ public class EditRecipe : IRequestHandler<EditRecipeRequest, bool>
 
         if (request.Recipe.Image is not null)
         {
-            var imageUrl = await _azureBlobService.UploadBlobAsync(request.Recipe.Image, existingImage ?? request.Recipe.Image.FileName, cancellationToken);
+            using var stream = new MemoryStream();
+            await request.Recipe.Image.CopyToAsync(stream, cancellationToken);
+            stream.Position = 0;
+            var imageUrl = await _azureBlobService.UploadBlobAsync(stream, existingImage ?? request.Recipe.Image.FileName, cancellationToken);
             entity.ImageUrl = imageUrl;
         }
 

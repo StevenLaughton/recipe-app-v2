@@ -1,5 +1,4 @@
 using Azure.Storage.Blobs;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using Recipes.Azure.Implementations;
 using Recipes.Azure.Models;
@@ -15,17 +14,14 @@ public class AzureBlobService : IAzureBlobService
         _configuration = configuration.Value;
     }
 
-    public async Task<string> UploadBlobAsync(IFormFile content, string filename,
+    public async Task<string> UploadBlobAsync(Stream content, string filename,
         CancellationToken cancellationToken)
     {
         var client = CreateBlobClient(_configuration.ConnectionString, _configuration.ContainerName);
 
         var blobClient = client.GetBlobClient(filename);
-
-        using var stream = new MemoryStream();
-        await content.CopyToAsync(stream, cancellationToken);
-        stream.Position = 0;
-        await blobClient.UploadAsync(stream, true, cancellationToken);
+        
+        await blobClient.UploadAsync(content, true, cancellationToken);
 
         return blobClient.Uri.AbsoluteUri;
     }
