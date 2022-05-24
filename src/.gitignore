@@ -7,6 +7,12 @@ Recipes.Core/obj
 Recipes.Infrastructure/bin
 Recipes.Infrastructure/obj
 
+Recipes.Web/bin
+Recipes.Web/obj
+
+Recipes.Azure/Recipes.Azure/bin
+Recipes.Azure/Recipes.Azure/obj
+
 Recipes.Api/appsettings.Development.json
 # Ignore Mac system files
 .DS_store
