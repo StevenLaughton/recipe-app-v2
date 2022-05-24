@@ -18,22 +18,22 @@ public static class ControllerWebApplicationExtensions
                 options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
             })
             .ConfigureApiBehaviorOptions(options =>
+            {
+                options.InvalidModelStateResponseFactory = c =>
                 {
-                    options.InvalidModelStateResponseFactory = c =>
-                    {
-                        var errors =  c.ModelState.Values.Where(v => v.Errors.Count > 0)
-                            .SelectMany(v => v.Errors)
-                            .Select(v => v.ErrorMessage);
+                    var errors = c.ModelState.Values.Where(v => v.Errors.Count > 0)
+                        .SelectMany(v => v.Errors)
+                        .Select(v => v.ErrorMessage);
 
-                        return new BadRequestObjectResult(new 
-                        {
-                            Message = "Model is invalid",
-                            Errors = errors
-                        });
-                    };
-                })
-            .AddFluentValidation(options =>
-                options.RegisterValidatorsFromAssemblyContaining<GetFromImageUrlRequestValidator>());
+                    return new BadRequestObjectResult(new
+                    {
+                        Message = "Model is invalid",
+                        Errors = errors
+                    });
+                };
+            })
+            .AddFluentValidation(options => options
+                .RegisterValidatorsFromAssemblyContaining<GetFromImageUrlRequestValidator>());
 
         return builder;
     }

@@ -8,11 +8,13 @@ import {
 import { useParams } from 'react-router';
 import { useFetch } from 'use-http';
 import { createOutline, trashOutline } from 'ionicons/icons';
-import { Ingredient, Recipe, Step } from '../models/recipe';
+import { Recipe } from '../models/recipe';
 import routes from '../models/constants/routes';
 import AppPage from '../components/AppPage';
 import responseRoutingHook from '../hooks/responseRoutingHook';
 import PortionSelect from '../components/PortionSelect';
+import { Step } from '../models/step';
+import { Ingredient } from '../models/ingredient';
 
 type RouteParams = {
   recipeId: string;
@@ -29,7 +31,7 @@ function View() {
   const [present] = useIonAlert();
 
   useEffect(() => {
-    get(`id?id=${recipeId}&includeImage=false`)
+    get(`id?id=${recipeId}`)
       .then((loadedRecipe: Recipe) => {
         if (response.ok) setRecipe(loadedRecipe);
       });

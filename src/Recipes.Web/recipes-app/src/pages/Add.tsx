@@ -2,11 +2,12 @@ import React, { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { useFetch } from 'use-http';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Recipe, recipeSchema } from '../models/recipe';
-import routes from '../models/constants/routes';
 import AppPage from '../components/AppPage';
 import RecipeForm from '../components/formComponents/RecipeForm';
 import responseRoutingHook from '../hooks/responseRoutingHook';
+import routes from '../models/constants/routes';
+import toFormData from '../extensions/recipeExtensions';
+import { Recipe, recipeSchema } from '../models/recipe';
 
 function Add() {
   const defaultValues = useMemo(() => recipeSchema.getDefaultFromShape(), []);
@@ -19,7 +20,8 @@ function Add() {
   });
 
   const onSubmit = async (data: Recipe) => {
-    await post('save', data);
+    const formData = toFormData(data);
+    await post('add', formData);
     ifResponseOkNavigate(response);
   };
 

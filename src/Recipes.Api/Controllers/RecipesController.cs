@@ -29,25 +29,25 @@ public class RecipesController : ControllerBase
 
     [HttpGet(Routes.Id)]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Recipe))]
-    public async Task<IActionResult> Get(int id,[FromQuery] bool includeImage, CancellationToken cancellationToken)
+    public async Task<IActionResult> Get(int id, CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(new GetRecipeRequest(id, includeImage), cancellationToken);
+        var result = await _mediator.Send(new GetRecipeRequest(id), cancellationToken);
 
         return Ok(result);
     }
 
     [HttpPost(Routes.Default)]
-    public async Task<IActionResult> Save([FromBody] RecipeDto recipe, CancellationToken cancellationToken)
+    public async Task<IActionResult> Add([FromForm] RecipeDto recipe, CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(new SaveRecipeRequest(recipe), cancellationToken);
-
+        var result = await _mediator.Send(new AddRecipeRequest(recipe), cancellationToken);
+        
         return Ok(result);
     }
     
     [HttpPut(Routes.Default)]
-    public async Task<IActionResult> Update([FromBody] RecipeDto recipe, CancellationToken cancellationToken)
+    public async Task<IActionResult> Edit([FromForm] RecipeDto recipe, CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(new UpdateRecipeRequest(recipe), cancellationToken);
+        var result = await _mediator.Send(new EditRecipeRequest(recipe), cancellationToken);
 
         return Ok(result);
     }

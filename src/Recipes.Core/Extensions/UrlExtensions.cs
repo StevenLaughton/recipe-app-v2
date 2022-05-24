@@ -13,4 +13,9 @@ public static class UrlExtensions
     {
         return Path.GetExtension(url)[1..];
     }
+
+    public static string? GetFilenameFromUrl(this string? url)
+    {
+        return url is null ? null : new Uri(url).AbsolutePath.Split('/').Last();
+    }
 }

@@ -8,4 +8,6 @@ public interface IRecipe
     public int Portions { get; set; }
     public bool IsVegetarian { get; set; }
     public Fare Fare { get; set; }
+    public string? ImageUrl { get; set; }
+
 }

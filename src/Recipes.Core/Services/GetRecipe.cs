@@ -7,7 +7,7 @@ using Recipes.Infrastructure.Dtos;
 
 namespace Recipes.Core.Services;
 
-public record GetRecipeRequest(int Id, bool IncludeImage) : IRequest<RecipeDto>;
+public record GetRecipeRequest(int Id): IRequest<RecipeDto>;
 
 public class GetRecipeHandler : IRequestHandler<GetRecipeRequest, RecipeDto>
 {
@@ -31,12 +31,6 @@ public class GetRecipeHandler : IRequestHandler<GetRecipeRequest, RecipeDto>
         if (dto is null)
         {
             throw new ArgumentNullException($"Recipe not found with id {request.Id}");
-        }
-
-        // This should be changed to not get from the database at all, but that will be done later
-        if (!request.IncludeImage)
-        {
-            dto.Image = null;
         }
 
         return dto;

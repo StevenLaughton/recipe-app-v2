@@ -16,10 +16,9 @@ public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
 
         builder.Property(recipe => recipe.Fare).HasDefaultValue(Fare.Food);
 
-        builder.HasOne(recipe => recipe.Image)
-            .WithOne(image => image.Recipe)
-            .HasForeignKey<RecipeImage>(image => image.RecipeId)
-            .OnDelete(DeleteBehavior.Cascade);
+        builder.Property(recipe => recipe.ImageUrl)
+            .HasMaxLength(512)
+            .IsRequired(false);
 
         builder.HasMany(recipe => recipe.Ingredients)
             .WithOne(ingredient => ingredient.Recipe)

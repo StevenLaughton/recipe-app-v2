@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Azure.Storage.Blobs" Version="12.12.0" />
       <PackageReference Include="FluentValidation.AspNetCore" Version="10.4.0" />
       <PackageReference Include="MediatR" Version="10.0.1" />
       <PackageReference Include="MediatR.Contracts" Version="1.0.1" />
@@ -15,6 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Recipes.Azure\Recipes.Azure\Recipes.Azure.csproj" />
       <ProjectReference Include="..\Recipes.Infrastructure\Recipes.Infrastructure.csproj" />
     </ItemGroup>
 

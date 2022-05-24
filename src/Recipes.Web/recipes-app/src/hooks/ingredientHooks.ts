@@ -1,4 +1,4 @@
-import { Ingredient } from '../models/recipe';
+import { Ingredient } from '../models/ingredient';
 
 enum VulgarFraction {
   '¼' = '1/4',
@@ -134,7 +134,6 @@ function parseIngredient(ingText: string): Ingredient[] {
       quantity: undefined,
       text: '',
       isGroupHeader: false,
-      recipeId: 0,
     };
 
     // Check if the first character is numeric.

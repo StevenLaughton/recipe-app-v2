@@ -1,10 +1,11 @@
 import {
-  InferType, number, object, string,
+  InferType, mixed, number, object, string,
 } from 'yup';
 
 export const recipeImageSchema = object({
   id: number().default(0),
-  imageData: string().nullable(),
+  filename: string().required(),
+  data: mixed<Blob>().required(),
 });
 
 export interface RecipeImage extends InferType<typeof recipeImageSchema> {

@@ -4,5 +4,5 @@ public class RecipeListItemDto
 {
     public int RecipeId { get; set; }
     public string? Name { get; set; }
-    public string? ImageData { get; set; }
+    public string? ImageUrl { get; set; }
 }

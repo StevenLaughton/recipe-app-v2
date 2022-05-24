@@ -10,10 +10,8 @@ public class DtoToEntityProfile : Profile
     {
         CreateMap<IngredientDto, Ingredient>();
         CreateMap<StepDto, Step>();
-        CreateMap<RecipeImageDto, RecipeImage>();
         CreateMap<TagDto, Tag>();
         CreateMap<RecipeDto, Recipe>()
-            .ForMember(c => c.Image, o => o.Ignore())
             .ForMember(c => c.Ingredients, o => o.MapFrom(s => s.Ingredients))
             .ForMember(c => c.Steps, o => o.MapFrom(s => s.Steps));
     }

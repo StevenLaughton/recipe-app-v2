@@ -5,7 +5,7 @@ import {
 } from 'react-hook-form';
 import InputItem from './InputItem';
 import ErrorMessage from './ErrorMessage';
-import { stepSchema } from '../../models/recipe';
+import { stepSchema } from '../../models/step';
 
 function StepsInput() {
   const {

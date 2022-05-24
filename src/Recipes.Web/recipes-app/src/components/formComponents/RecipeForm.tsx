@@ -8,13 +8,8 @@ import ErrorMessage from './ErrorMessage';
 import IngredientsInput from './IngredientsInput';
 import StepsInput from './StepsInput';
 import ImageInput from './ImageInput';
-import { Recipe } from '../../models/recipe';
 import FareSegment from '../FareSegment';
-
-export interface CheckboxChangeEventDetail {
-  value: any;
-  checked: boolean;
-}
+import { Recipe } from '../../models/recipe';
 
 interface Props {
   form: UseFormReturn<Recipe>

@@ -2,12 +2,12 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Recipes.Api.Constants;
 using Recipes.Core.Services;
-using Recipes.Infrastructure.Entities;
+using Recipes.Infrastructure.Dtos;
 
 namespace Recipes.Api.Controllers;
 
 [ApiController]
-public class ImagesController: ControllerBase
+public class ImagesController : ControllerBase
 {
     private readonly IMediator _mediator;
 
@@ -17,10 +17,11 @@ public class ImagesController: ControllerBase
     }
 
     [HttpPost(Routes.Default)]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RecipeImage))]
-    public async Task<IActionResult> GetBase64String([FromBody] GetFromImageUrlRequest request, CancellationToken cancellationToken)
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ImageDto))]
+    public async Task<IActionResult> GetImageBlobFromUrl([FromBody] GetImageBlobFromUrlRequest request,
+        CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(request, cancellationToken);
-        return Ok(result);
+        return File(result.Data, "application/octec-stream", result.Filename);
     }
 }

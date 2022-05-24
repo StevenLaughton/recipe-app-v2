@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import {
   IonButton, IonCol, IonIcon, IonLabel, IonRow, IonSpinner,
 } from '@ionic/react';
@@ -7,21 +7,34 @@ import {
 } from 'ionicons/icons';
 import { useFetch } from 'use-http';
 import { useFormContext } from 'react-hook-form';
-import { RecipeImage } from '../../models/recipe-image';
 import AppImage from '../AppImage';
 
 function ImageInput() {
-  const { post, response, loading } = useFetch('images');
+  const { post, response, loading } = useFetch('images', { responseType: 'blob' });
   const { setValue, watch } = useFormContext();
-  const image: string = watch('image').imageData;
+  const image: string = watch('imageUrl');
+  const [img, setImg] = useState<string>();
 
   const pasteFromClipboard = async (): Promise<void> => {
     const imageUrl = await navigator.clipboard.readText();
-    const recipeImage: RecipeImage = await post('getBase64String', { url: imageUrl });
-    if (response.ok) setValue('image', recipeImage);
+    await post('getImageBlobFromUrl', { url: imageUrl });
+    if (response.ok) {
+      const filename: string = response.headers
+        .get('content-disposition')
+        ?.split('; ')
+        .find((dis) => dis.startsWith('filename='))
+        ?.slice('filename='.length) ?? '';
+
+      const data = await response.blob();
+      setValue('image', { data, filename });
+      setImg(URL.createObjectURL(data));
+    }
   };
 
   const ImageTemplate = useCallback(() => {
+    if (img != null) {
+      return <AppImage imageData={img} />;
+    }
     if (image != null) {
       return <AppImage imageData={image} />;
     }
@@ -34,7 +47,7 @@ function ImageInput() {
         <IonLabel> No picture! </IonLabel>
       </>
     );
-  }, [image, loading]);
+  }, [img, image, loading]);
 
   return (
     <IonRow>

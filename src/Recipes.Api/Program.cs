@@ -1,5 +1,8 @@
 using Recipes.Api.Constants;
 using Recipes.Api.IoC;
+using Recipes.Azure.Implementations;
+using Recipes.Azure.Interfaces;
+using Recipes.Azure.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +18,10 @@ builder.AddCommandHandling()
     .ConfigureLogging()
     .AddAutoMapper()
     .AddModelValidation();
+
+builder.Services.Configure<AzureBlobConfiguration>(builder.Configuration.GetSection(nameof(AzureBlobConfiguration)));
+builder.Services.AddScoped<IAzureBlobService, AzureBlobService>();
+
 
 var app = builder.Build();
 

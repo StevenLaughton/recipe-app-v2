@@ -10,13 +10,11 @@ public class EntityToDtoProfile : Profile
     {
         CreateProjection<Ingredient, IngredientDto>();
         CreateProjection<Step, StepDto>();
-        CreateProjection<RecipeImage, RecipeImageDto>();
         CreateProjection<Tag, TagDto>();
-        CreateProjection<Recipe, RecipeDto>();
+        CreateProjection<Recipe, RecipeDto>()
+            .ForMember(c => c.Ingredients, o => o.MapFrom(s => s.Ingredients))
+            .ForMember(c => c.Steps, o => o.MapFrom(s => s.Steps));
         CreateProjection<Recipe, RecipeListItemDto>()
-            .ForMember(dest => dest.RecipeId,
-                act => act.MapFrom(src => src.Id))
-            .ForMember(dest => dest.ImageData,
-                act => act.MapFrom(src => src.Image.ImageData));
+            .ForMember(dest => dest.RecipeId, act => act.MapFrom(src => src.Id));
     }
 }

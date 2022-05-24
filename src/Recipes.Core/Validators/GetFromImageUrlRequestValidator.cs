@@ -3,7 +3,7 @@ using Recipes.Core.Services;
 
 namespace Recipes.Core.Validators;
 
-public class GetFromImageUrlRequestValidator : AbstractValidator<GetFromImageUrlRequest>
+public class GetFromImageUrlRequestValidator : AbstractValidator<GetImageBlobFromUrlRequest>
 {
     public GetFromImageUrlRequestValidator()
     {

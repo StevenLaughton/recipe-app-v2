@@ -28,7 +28,12 @@ public class GetRecipeList : IRequestHandler<GetRecipeListRequest, IList<RecipeL
             .AsSplitQuery()
             .Where(recipe => recipe.Fare == request.Fare)
             .OrderBy(recipe => recipe.Name)
-            .ProjectTo<RecipeListItemDto>(_configurationProvider)
+            .Select(recipe => new RecipeListItemDto
+            {
+                RecipeId = recipe.Id,
+                Name = recipe.Name,
+                ImageUrl = recipe.ImageUrl 
+            })
             .ToListAsync(cancellationToken);
 
         return recipeListItemDtos;

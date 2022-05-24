@@ -4,10 +4,10 @@ import {
 import React, { useState } from 'react';
 import { useFetch } from 'use-http';
 import RecipeCard from '../components/RecipeCard';
-import { RecipeListItem } from '../models/recipe-list-item';
 import AppPage from '../components/AppPage';
 import Fare from '../models/constants/fare';
 import FareSegment from '../components/FareSegment';
+import { RecipeListItem } from '../models/recipeListItem';
 
 function MyRecipes() {
   const [fare, setFare] = useState<Fare>('Food');

@@ -1,32 +1,10 @@
 import {
   array, boolean, InferType, mixed, number, object, string,
 } from 'yup';
-import { recipeImageSchema } from './recipe-image';
 import Fare from './constants/fare';
-
-export const stepSchema = object({
-  id: number().required().default(0),
-  text: string().required('step is required').max(512),
-  isGroupHeader: boolean().default(false),
-  recipeId: number(),
-});
-
-export const ingredientSchema = object({
-  id: number().required().default(0),
-  quantity: number()
-    .nullable(true)
-    .typeError('quantity must be a number')
-    .when('isGroupHeader', {
-      is: true,
-      then: (schema) => schema.notRequired(),
-      otherwise: (schema) => schema
-        .required('a quantity is required')
-        .min(0, 'quantity must be greater than 0'),
-    }),
-  text: string().required('ingredient is required').max(256),
-  isGroupHeader: boolean().default(false),
-  recipeId: number().required().default(0),
-});
+import { stepSchema } from './step';
+import { ingredientSchema } from './ingredient';
+import { recipeImageSchema } from './recipeImage';
 
 export const recipeSchema = object({
   id: number().required().default(0),
@@ -40,7 +18,8 @@ export const recipeSchema = object({
     .oneOf(['Food', 'Drink'])
     .required()
     .default('Food'),
-  image: recipeImageSchema.notRequired(),
+  image: recipeImageSchema.nullable(),
+  imageUrl: string().nullable(),
   ingredients: array().of(ingredientSchema)
     .default([ingredientSchema.getDefaultFromShape()])
     .required(),
@@ -51,10 +30,4 @@ export const recipeSchema = object({
 }).required();
 
 export interface Recipe extends InferType<typeof recipeSchema> {
-}
-
-export interface Step extends InferType<typeof stepSchema> {
-}
-
-export interface Ingredient extends InferType<typeof ingredientSchema> {
 }

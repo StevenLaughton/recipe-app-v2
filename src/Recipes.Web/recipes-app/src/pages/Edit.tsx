@@ -3,11 +3,12 @@ import { useParams } from 'react-router';
 import { useFetch } from 'use-http';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Recipe, recipeSchema } from '../models/recipe';
 import AppPage from '../components/AppPage';
 import RecipeForm from '../components/formComponents/RecipeForm';
 import routes from '../models/constants/routes';
 import responseRoutingHook from '../hooks/responseRoutingHook';
+import toFormData from '../extensions/recipeExtensions';
+import { Recipe, recipeSchema } from '../models/recipe';
 
 type RouteParams = {
   recipeId: string;
@@ -20,7 +21,7 @@ function Edit() {
     put, response, loading: saving,
   } = useFetch('recipes');
   const { ifResponseOkNavigate } = responseRoutingHook(`${routes.view}/${recipeId}`);
-  const { data: recipe, loading } = useFetch<Recipe>(`recipes/id?id=${recipeId}&includeImage=true`, {}, [recipeId]);
+  const { data: recipe, loading } = useFetch<Recipe>(`recipes/id?id=${recipeId}`, {}, [recipeId]);
 
   const form = useForm<Recipe>({
     defaultValues,
@@ -32,7 +33,8 @@ function Edit() {
   }, [recipe]);
 
   const onSubmit = async (data: Recipe) => {
-    await put('update', data);
+    const formData = toFormData(data);
+    await put('edit', formData);
     ifResponseOkNavigate(response);
   };
 

@@ -14,7 +14,6 @@ public static class RecipeQueries
         EF.CompileAsyncQuery((DatabaseContext ctx, int id) =>
             ctx.Recipes.AsSplitQuery()
                 .AsTracking()
-                .Include(recipe => recipe.Image)
                 .Include(recipe => recipe.Ingredients)
                 .Include(recipe => recipe.Steps)
                 .First(recipe => recipe.Id == id));

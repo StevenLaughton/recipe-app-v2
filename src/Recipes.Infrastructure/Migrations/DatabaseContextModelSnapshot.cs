@@ -65,6 +65,10 @@ namespace Recipes.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasDefaultValue(1);
 
+                    b.Property<string>("ImageUrl")
+                        .HasMaxLength(512)
+                        .HasColumnType("nvarchar(512)");
+
                     b.Property<bool>("IsVegetarian")
                         .HasColumnType("bit");
 
@@ -81,29 +85,6 @@ namespace Recipes.Infrastructure.Migrations
                     b.HasIndex("Fare");
 
                     b.ToTable("Recipes", (string)null);
-                });
-
-            modelBuilder.Entity("Recipes.Infrastructure.Entities.RecipeImage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("ImageData")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("RecipeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RecipeId")
-                        .IsUnique()
-                        .HasFilter("[RecipeId] IS NOT NULL");
-
-                    b.ToTable("Images", (string)null);
                 });
 
             modelBuilder.Entity("Recipes.Infrastructure.Entities.Step", b =>
@@ -176,16 +157,6 @@ namespace Recipes.Infrastructure.Migrations
                     b.Navigation("Recipe");
                 });
 
-            modelBuilder.Entity("Recipes.Infrastructure.Entities.RecipeImage", b =>
-                {
-                    b.HasOne("Recipes.Infrastructure.Entities.Recipe", "Recipe")
-                        .WithOne("Image")
-                        .HasForeignKey("Recipes.Infrastructure.Entities.RecipeImage", "RecipeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.Navigation("Recipe");
-                });
-
             modelBuilder.Entity("Recipes.Infrastructure.Entities.Step", b =>
                 {
                     b.HasOne("Recipes.Infrastructure.Entities.Recipe", "Recipe")
@@ -214,8 +185,6 @@ namespace Recipes.Infrastructure.Migrations
 
             modelBuilder.Entity("Recipes.Infrastructure.Entities.Recipe", b =>
                 {
-                    b.Navigation("Image");
-
                     b.Navigation("Ingredients");
 
                     b.Navigation("Steps");

@@ -17,6 +17,7 @@ public static class CorsWebApplicationBuilderExtensions
             .AllowAnyOrigin()
             .WithMethods(HttpMethods.Get, HttpMethods.Post, HttpMethods.Put, HttpMethods.Options, HttpMethods.Delete)
             .AllowAnyHeader()
+            .WithExposedHeaders("Content-Disposition")
         );
     }
 }

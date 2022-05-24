@@ -6,7 +6,7 @@ import {
 import InputItem from './InputItem';
 import ErrorMessage from './ErrorMessage';
 import mimeTypes from '../../models/constants/mimeTypes';
-import { Ingredient } from '../../models/recipe';
+import { Ingredient } from '../../models/ingredient';
 import parseIngredients from '../../hooks/ingredientHooks';
 
 function IngredientsInput() {
