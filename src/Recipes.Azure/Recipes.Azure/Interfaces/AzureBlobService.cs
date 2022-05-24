@@ -9,7 +9,7 @@ namespace Recipes.Azure.Interfaces;
 public class AzureBlobService : IAzureBlobService
 {
     private readonly AzureBlobConfiguration _configuration;
-
+    
     public AzureBlobService(IOptions<AzureBlobConfiguration> configuration)
     {
         _configuration = configuration.Value;
