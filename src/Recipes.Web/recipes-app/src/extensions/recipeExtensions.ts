@@ -14,7 +14,6 @@ export default function toFormData(data: Recipe): FormData {
   }
   data.ingredients.forEach((ingredient: Ingredient, index: number) => {
     formData.append(`ingredients[${index}].id`, ingredient.id.toString());
-    // formData.append(`ingredients[${index}].recipeId`, ingredient.recipeId.toString());
     formData.append(`ingredients[${index}].text`, ingredient.text.toString());
     formData.append(`ingredients[${index}].isGroupHeader`, ingredient.isGroupHeader.toString());
     if (ingredient.quantity) {
@@ -23,9 +22,8 @@ export default function toFormData(data: Recipe): FormData {
   });
   data.steps.forEach((step: Step, index: number) => {
     formData.append(`steps[${index}].id`, step.id.toString());
-    // formData.append(`steps[${index}].recipeId`, step.recipeId.toString());
     formData.append(`steps[${index}].text`, step.text.toString());
-    formData.append(`ingredients[${index}].isGroupHeader`, step.isGroupHeader.toString());
+    formData.append(`steps[${index}].isGroupHeader`, step.isGroupHeader.toString());
   });
   // formData.append('tags', data.id.toString());
 

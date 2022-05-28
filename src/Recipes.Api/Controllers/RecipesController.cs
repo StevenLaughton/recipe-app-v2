@@ -49,7 +49,12 @@ public class RecipesController : ControllerBase
     {
         var result = await _mediator.Send(new EditRecipeRequest(recipe), cancellationToken);
 
-        return Ok(result);
+        if (result)
+        {
+            return Ok();
+        }
+
+        return BadRequest();
     }
 
     [HttpDelete(Routes.Id)]

@@ -20,7 +20,7 @@ function Edit() {
   const {
     put, response, loading: saving,
   } = useFetch('recipes');
-  const { ifResponseOkNavigate } = responseRoutingHook(`${routes.view}/${recipeId}`);
+  const { ifResponseOkNavigate } = responseRoutingHook(routes.home);
   const { data: recipe, loading } = useFetch<Recipe>(`recipes/id?id=${recipeId}`, {}, [recipeId]);
 
   const form = useForm<Recipe>({

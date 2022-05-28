@@ -12,6 +12,7 @@ public class DtoToEntityProfile : Profile
         CreateMap<StepDto, Step>();
         CreateMap<TagDto, Tag>();
         CreateMap<RecipeDto, Recipe>()
+            .ForMember(r => r.ImageUrl, o => o.Ignore())
             .ForMember(c => c.Ingredients, o => o.MapFrom(s => s.Ingredients))
             .ForMember(c => c.Steps, o => o.MapFrom(s => s.Steps));
     }

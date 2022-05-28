@@ -30,9 +30,9 @@ public class EditRecipe : IRequestHandler<EditRecipeRequest, bool>
 
         var existingImage = entity.ImageUrl.GetFilenameFromUrl();
         
-        entity = _mapper.Map(request.Recipe, entity);
-
-        if (request.Recipe.Image is not null)
+         entity = _mapper.Map(request.Recipe, entity);
+        
+         if (request.Recipe.Image is not null)
         {
             using var stream = new MemoryStream();
             await request.Recipe.Image.CopyToAsync(stream, cancellationToken);
