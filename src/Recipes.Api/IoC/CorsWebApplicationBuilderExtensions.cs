@@ -14,7 +14,8 @@ public static class CorsWebApplicationBuilderExtensions
     private static void ApplicationUiPolicy(CorsOptions options, WebApplicationBuilder webApplicationBuilder)
     {
         options.AddPolicy(name: CorsPolicies.ApplicationUiPolicy, builder => builder
-            .WithOrigins(webApplicationBuilder.Configuration.GetValue<string>("AllowedOrigin"))
+            // .WithOrigins(webApplicationBuilder.Configuration.GetValue<string>("AllowedOrigin"))
+            .AllowAnyOrigin()
             .WithMethods(HttpMethods.Get, HttpMethods.Post, HttpMethods.Put, HttpMethods.Options, HttpMethods.Delete)
             .AllowAnyHeader()
             .WithExposedHeaders("Content-Disposition")
