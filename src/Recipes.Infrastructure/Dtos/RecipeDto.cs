@@ -11,7 +11,7 @@ public class RecipeDto : IRecipe
     public int Portions { get; set; }
     public bool IsVegetarian { get; set; }
     public Fare Fare { get; set; }
-    public IFormFile? Image { get; set; }
+    public IFormFile? Image { get; set; } 
     public string? ImageUrl { get; set; }
 
     public ICollection<IngredientDto> Ingredients { get; set; } = new List<IngredientDto>();

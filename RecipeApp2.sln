@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recipes.Web", "src\Recipes.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recipes.Api", "src\Recipes.Api\Recipes.Api.csproj", "{A780FEF7-8F6E-49D9-B30A-E6AB5E771C13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recipes.Azure", "src\Recipes.Azure\Recipes.Azure\Recipes.Azure.csproj", "{61E595C8-C577-4494-8823-41AED9958D03}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recipes.Azure", "src\Recipes.Azure\Recipes.Azure.csproj", "{61E595C8-C577-4494-8823-41AED9958D03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

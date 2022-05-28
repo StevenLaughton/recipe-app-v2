@@ -32,7 +32,7 @@ public class ApplicationInsightsBehaviour<TRequest, TResponse> : IPipelineBehavi
             response = await next().ConfigureAwait(false);
             operation.Telemetry.Success = true;
         }
-        catch (Exception e)
+        catch (Exception)
         {
             operation.Telemetry.Success = false;
 

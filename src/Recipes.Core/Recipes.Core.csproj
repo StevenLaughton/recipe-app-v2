@@ -16,7 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Recipes.Azure\Recipes.Azure\Recipes.Azure.csproj" />
+      <ProjectReference Include="..\Recipes.Azure\Recipes.Azure.csproj" />
       <ProjectReference Include="..\Recipes.Infrastructure\Recipes.Infrastructure.csproj" />
     </ItemGroup>
 
