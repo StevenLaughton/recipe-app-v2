@@ -12,7 +12,7 @@ public class GetImageBlobFromUrl : IRequestHandler<GetImageBlobFromUrlRequest, I
 
     public GetImageBlobFromUrl(IHttpClientFactory httpClientFactory)
     {
-        _httpClientFactory = httpClientFactory;
+        _httpClientFactory = httpClientFactory  ?? throw new ArgumentNullException(nameof(httpClientFactory));
     }
 
     public async Task<ImageDto> Handle(GetImageBlobFromUrlRequest request, CancellationToken cancellationToken)

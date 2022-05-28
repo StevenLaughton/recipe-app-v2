@@ -11,7 +11,7 @@ public class DeleteRecipe : IRequestHandler<DeleteRecipeRequest, bool>
 
     public DeleteRecipe(DatabaseContext context)
     {
-        _context = context;
+        _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
     public async Task<bool> Handle(DeleteRecipeRequest request, CancellationToken cancellationToken)

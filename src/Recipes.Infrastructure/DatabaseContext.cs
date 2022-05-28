@@ -14,7 +14,7 @@ public class DatabaseContext : DbContext
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(DatabaseContext).Assembly);
     }
 
-    public DbSet<Recipe> Recipes { get; set; } 
-    public DbSet<Ingredient> Ingredients { get; set; }
-    public DbSet<Tag> Tags { get; set; }
+    public DbSet<Recipe> Recipes => Set<Recipe>();
+    public DbSet<Ingredient> Ingredients => Set<Ingredient>();
+    public DbSet<Tag> Tags => Set<Tag>();
 }

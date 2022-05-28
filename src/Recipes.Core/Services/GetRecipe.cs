@@ -16,8 +16,8 @@ public class GetRecipeHandler : IRequestHandler<GetRecipeRequest, RecipeDto>
 
     public GetRecipeHandler(DatabaseContext context, IMapper mapper)
     {
-        _context = context;
-        _configurationProvider = mapper.ConfigurationProvider;
+        _context = context  ?? throw new ArgumentNullException(nameof(context));
+        _configurationProvider = mapper.ConfigurationProvider  ?? throw new ArgumentNullException(nameof(mapper));
     }
 
     public async Task<RecipeDto> Handle(GetRecipeRequest request, CancellationToken cancellationToken)

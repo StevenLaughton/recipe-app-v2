@@ -6,7 +6,7 @@ namespace Recipes.Infrastructure.Entities;
 public class Recipe : IRecipe
 {
     public int Id { get; set; }
-    public string Name { get; set; } = string.Empty;
+    public string Name { get; set; } = null!;
     public int Portions { get; set; }
     public bool IsVegetarian { get; set; }
     public Fare Fare { get; set; }

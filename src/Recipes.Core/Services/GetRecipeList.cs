@@ -17,8 +17,8 @@ public class GetRecipeList : IRequestHandler<GetRecipeListRequest, IList<RecipeL
 
     public GetRecipeList(DatabaseContext context, IMapper mapper)
     {
-        _context = context;
-        _configurationProvider = mapper.ConfigurationProvider;
+        _context = context ?? throw new ArgumentNullException(nameof(context));
+        _configurationProvider = mapper.ConfigurationProvider ?? throw new ArgumentNullException(nameof(mapper));
     }
 
     public async Task<IList<RecipeListItemDto>> Handle(GetRecipeListRequest request,
@@ -32,7 +32,7 @@ public class GetRecipeList : IRequestHandler<GetRecipeListRequest, IList<RecipeL
             {
                 RecipeId = recipe.Id,
                 Name = recipe.Name,
-                ImageUrl = recipe.ImageUrl 
+                ImageUrl = recipe.ImageUrl
             })
             .ToListAsync(cancellationToken);
 

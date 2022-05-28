@@ -14,6 +14,6 @@ public class IngredientConfiguration : IEntityTypeConfiguration<Ingredient>
             .HasMaxLength(256);
 
         builder.Property(ingredient => ingredient.Quantity)
-            .HasPrecision(5);
+            .HasColumnType("decimal(5,2)");
     }
 }

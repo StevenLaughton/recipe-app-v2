@@ -143,7 +143,7 @@ namespace Recipes.Infrastructure.Migrations
 
                     b.HasIndex("TagsId");
 
-                    b.ToTable("RecipeTag");
+                    b.ToTable("RecipeTag", (string)null);
                 });
 
             modelBuilder.Entity("Recipes.Infrastructure.Entities.Ingredient", b =>

@@ -17,9 +17,9 @@ public class AddRecipe : IRequestHandler<AddRecipeRequest, int>
 
     public AddRecipe(DatabaseContext context, IMapper mapper, IAzureBlobService azureBlobService)
     {
-        _context = context;
-        _mapper = mapper;
-        _azureBlobService = azureBlobService;
+        _context = context ?? throw new ArgumentNullException(nameof(context));
+        _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+        _azureBlobService = azureBlobService ?? throw new ArgumentNullException(nameof(azureBlobService));
     }
 
     public async Task<int> Handle(AddRecipeRequest request, CancellationToken cancellationToken)

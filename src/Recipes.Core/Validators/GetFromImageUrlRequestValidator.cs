@@ -29,6 +29,6 @@ public static class ValidationConstants
 
     public static readonly List<string> AllowedImageTypes = new()
     {
-        ".jpg", ".jpeg", ".png"
+        ".jpg", ".jpeg", ".png", "webp", "svg"
     };
 }

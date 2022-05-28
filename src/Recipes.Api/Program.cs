@@ -6,6 +6,8 @@ using Recipes.Azure.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.Configure<AzureBlobConfiguration>(builder.Configuration.GetSection(nameof(AzureBlobConfiguration)));
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -19,7 +21,6 @@ builder.AddCommandHandling()
     .AddAutoMapper()
     .AddModelValidation();
 
-builder.Services.Configure<AzureBlobConfiguration>(builder.Configuration.GetSection(nameof(AzureBlobConfiguration)));
 builder.Services.AddScoped<IAzureBlobService, AzureBlobService>();
 
 

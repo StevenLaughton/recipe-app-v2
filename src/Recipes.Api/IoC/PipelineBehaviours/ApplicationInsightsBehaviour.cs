@@ -1,3 +1,4 @@
+using System.Text.Json;
 using MediatR;
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.DataContracts;
@@ -17,9 +18,14 @@ public class ApplicationInsightsBehaviour<TRequest, TResponse> : IPipelineBehavi
     public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken,
         RequestHandlerDelegate<TResponse> next)
     {
-        var commandName = typeof(TRequest).Name;
+        var telemetry = new DependencyTelemetry
+        {
+            Name = typeof(TRequest).Name,
+            Data = JsonSerializer.Serialize(request),
+            Type = "Command"
+        };
 
-        using var operation = _telemetryClient.StartOperation<DependencyTelemetry>(commandName);
+        using var operation = _telemetryClient.StartOperation(telemetry);
         TResponse response;
         try
         {
@@ -29,9 +35,12 @@ public class ApplicationInsightsBehaviour<TRequest, TResponse> : IPipelineBehavi
         catch (Exception e)
         {
             operation.Telemetry.Success = false;
-            _telemetryClient.TrackException(e);
 
             throw;
+        }
+        finally
+        {
+            _telemetryClient.StopOperation(operation);
         }
 
         return response;
