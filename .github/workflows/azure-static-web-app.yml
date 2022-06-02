@@ -25,9 +25,10 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BLUE_MOSS_0D214F803 }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: "/src/Recipes.Web/recipes-app" # App source code path
+          app_location: "/src/Recipes.Ui2" # App source code path
           api_location: "" # Api source code path - optional
           output_location: "build" # Built app content directory - optional
+          app_build_command: "npm run build"
           ###### End of Repository/Build Configurations ######
 
 #  close_pull_request_job:

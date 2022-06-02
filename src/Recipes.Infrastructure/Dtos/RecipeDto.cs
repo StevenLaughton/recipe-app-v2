@@ -14,9 +14,9 @@ public class RecipeDto : IRecipe
     public IFormFile? Image { get; set; } 
     public string? ImageUrl { get; set; }
 
-    public ICollection<IngredientDto> Ingredients { get; set; } = new List<IngredientDto>();
+    public IEnumerable<IngredientDto> Ingredients { get; set; } = new List<IngredientDto>();
 
-    public ICollection<StepDto> Steps { get; set; } = new List<StepDto>();
+    public IEnumerable<StepDto> Steps { get; set; } = new List<StepDto>();
 
-    public ICollection<TagDto> Tags { get; set; } = new List<TagDto>();
+    public IEnumerable<TagDto> Tags { get; set; } = new List<TagDto>();
 }
