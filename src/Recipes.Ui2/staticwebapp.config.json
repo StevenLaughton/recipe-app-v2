@@ -38,21 +38,5 @@
     "404": {
       "rewrite": "/index.html"
     }
-  },
-  "globalHeaders": {
-    "Content-Type": "charset=UTF-8",
-    "content-security-policy": "default-src https: 'self'; object-src 'none'; frame-src 'self'; img-src 'self'",
-    "Access-Control-Allow-Origin": "identity.azurestaticapps.net, *.azurestaticapps.net, recipeappstorage.blob.core.windows.net/*",
-    "X-Frame-Options": "SAMEORIGIN",
-    "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
-    "X-Content-Type-Options": "nosniff",
-    "x-xss-protection": "1; mode=block",
-    "referrer-policy": "same-origin"
-  },
-  "mimeTypes": {
-    ".html": "text/html",
-    ".json": "text/json",
-    ".css": "text/css",
-    ".js": "text/javascript"
   }
 }
