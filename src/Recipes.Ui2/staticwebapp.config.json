@@ -1,0 +1,22 @@
+{
+  "routes": [
+    {
+      "route": "/tabs"
+    },
+    {
+      "route": "/tabs/recipes"
+    },
+    {
+      "route": "/tabs/recipes/*"
+    },
+    {
+      "route": "/tabs/recipes/*/edit"
+    },
+    {
+      "route": "/tabs/add"
+    }
+  ],
+  "globalHeaders": {
+    "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
+  }
+}
