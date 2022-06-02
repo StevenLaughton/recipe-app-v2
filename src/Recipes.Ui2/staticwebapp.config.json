@@ -42,7 +42,7 @@
   "globalHeaders": {
     "Content-Type": "charset=UTF-8",
     "content-security-policy": "default-src https: 'self'; object-src 'none'; frame-src 'self'; img-src 'self'",
-    "Access-Control-Allow-Origin": "identity.azurestaticapps.net, *.azurestaticapps.net",
+    "Access-Control-Allow-Origin": "identity.azurestaticapps.net, *.azurestaticapps.net, recipeappstorage.blob.core.windows.net/*",
     "X-Frame-Options": "SAMEORIGIN",
     "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
     "X-Content-Type-Options": "nosniff",
