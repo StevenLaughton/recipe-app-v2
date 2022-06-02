@@ -1,13 +1,8 @@
-import React, { useCallback, useState } from 'react';
-import {
-  IonButton, IonCol, IonIcon, IonLabel, IonRow, IonSpinner,
-} from '@ionic/react';
-import {
-  cameraOutline, clipboardOutline, imageOutline, sadOutline,
-} from 'ionicons/icons';
-import { useFetch } from 'use-http';
-import { useFormContext } from 'react-hook-form';
-import AppImage from '../AppImage';
+import React, {useCallback, useState} from 'react';
+import {IonButton, IonCol, IonIcon, IonLabel, IonRow, IonSpinner,} from '@ionic/react';
+import {cameraOutline, clipboardOutline, imageOutline, sadOutline,} from 'ionicons/icons';
+import {useFetch} from 'use-http';
+import {useFormContext} from 'react-hook-form';
 
 function ImageInput() {
   const { post, response, loading } = useFetch('images', { responseType: 'blob' });
@@ -30,6 +25,15 @@ function ImageInput() {
       setImg(URL.createObjectURL(data));
     }
   };
+
+  function AppImage({ imageData }: { imageData: string }) {
+    const imageStyle = {
+      aspectRatio: '1',
+    };
+
+    // eslint-disable-next-line @next/next/no-img-element
+    return (<img src={imageData} alt="img" className="object-cover h-full rounded-xl" style={imageStyle as any} />);
+  }
 
   const ImageTemplate = useCallback(() => {
     if (img != null) {

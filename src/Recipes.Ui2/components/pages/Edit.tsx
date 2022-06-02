@@ -28,7 +28,7 @@ function Edit({match}: EditPageProps) {
 
   useEffect(() => {
     form.reset(recipe);
-  }, [recipe]);
+  }, [recipe, form]);
 
   const onSubmit = async (data: Recipe) => {
     const formData = convertToFormData(data);
