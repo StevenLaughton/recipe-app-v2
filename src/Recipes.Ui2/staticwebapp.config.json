@@ -7,10 +7,7 @@
       "route": "/tabs/recipes"
     },
     {
-      "route": "/tabs/recipes/*"
-    },
-    {
-      "route": "/tabs/recipes/*/edit"
+      "route": "/tabs/recipes*"
     },
     {
       "route": "/tabs/add"
