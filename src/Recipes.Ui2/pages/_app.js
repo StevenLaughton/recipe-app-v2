@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Script from 'next/script';
 import 'tailwindcss/tailwind.css';
 import '@ionic/react/css/core.css';
 import '@ionic/react/css/padding.css';
