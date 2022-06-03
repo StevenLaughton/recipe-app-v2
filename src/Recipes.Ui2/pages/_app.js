@@ -18,26 +18,29 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <meta name="color-scheme" content="light dark"/>
-        <meta
-          name="viewport"
-          content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
-        />
-        <meta name="format-detection" content="telephone=no"/>
-        <meta name="msapplication-tap-highlight" content="no"/>
+        <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover' />
+        <meta name='application-name' content='recipe-app' />
+        <meta name='apple-mobile-web-app-capable' content='yes' />
+        <meta name='apple-mobile-web-app-status-bar-style' content='default' />
+        <meta name='apple-mobile-web-app-title' content='PWA App' />
+        <meta name='description' content='Best PWA App in the world' />
+        <meta name='format-detection' content='telephone=no' />
+        <meta name='mobile-web-app-capable' content='yes' />
+        <meta name='msapplication-config' content='/static/icons/browserconfig.xml' />
+        <meta name='msapplication-TileColor' content='#2B5797' />
+        <meta name='msapplication-tap-highlight' content='no' />
+        <meta name='theme-color' content='#000000' />
 
-        <link rel="manifest" crossOrigin="use-credentials" href="%PUBLIC_URL%/manifest.json"/>
+        <link rel='apple-touch-icon' sizes='180x180' href='/assets/icon/bowl.png' />
+        <link rel='icon' type='image/png' sizes='32x32' href='/static/icons/favicon-32x32.png' />
+        <link rel='icon' type='image/png' sizes='16x16' href='/static/icons/favicon-16x16.png' />
+        <link rel='manifest' href='/manifest.json' />
+        <link rel='mask-icon' href='/static/icons/safari-pinned-tab.svg' color='#5bbad5' />
+        <link rel='shortcut icon' href='/assets/icon/bowl.svg' />
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500' />
 
-        <link rel="shortcut icon" type="image/svg" href="%PUBLIC_URL%/assets/icon/bowl.svg"/>
-        <link rel="apple-touch-icon" href="%PUBLIC_URL%/assets/icon/bowl.png"/>
-        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#008f00"/>
-        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1e2023"/>
-        <meta name="apple-mobile-web-app-capable" content="yes"/>
-        <meta name="apple-mobile-web-app-title" content="Recipes"/>
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
       </Head>
       <Component {...pageProps} />
-      <Script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></Script>
     </>
   );
 }
