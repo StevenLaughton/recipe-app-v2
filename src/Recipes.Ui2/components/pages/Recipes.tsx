@@ -25,6 +25,8 @@ const RecipeCard = ({name, imageUrl, recipeId}: RecipeListItem) => (
                        src={imageUrl ?? '/037f57bb-0e65-484e-8a6e-210ae41c0847.jpg'}
                        alt=""
                        unoptimized
+                       sizes="50vw"
+                       priority
                        layout='fill'
                 />
             </div>
