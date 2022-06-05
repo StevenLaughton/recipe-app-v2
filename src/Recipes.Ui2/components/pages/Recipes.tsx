@@ -28,7 +28,7 @@ const RecipeCard = ({name, imageUrl, recipeId}: RecipeListItem) => (
                        layout='fill'
                 />
             </div>
-            <div className="px-4 py-4 bg-white rounded-b-xl dark:bg-gray-900">
+            <div className="px-4 py-4 bg-white rounded-b-xl dark:bg-slate-800">
                 <h2 className="font-bold text-lg text-gray-800 dark:text-gray-100">{name}</h2>
             </div>
         </Card>

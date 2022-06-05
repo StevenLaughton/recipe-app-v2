@@ -29,6 +29,7 @@ function ImageInput() {
   function AppImage({ imageData }: { imageData: string }) {
     const imageStyle = {
       aspectRatio: '1',
+      objectFit: 'cover'
     };
 
     // eslint-disable-next-line @next/next/no-img-element

@@ -23,9 +23,9 @@ function AppPage({
           {toolbarButtons}
         </IonToolbar>
       </IonHeader>
-      <IonContent className="ion-padding" fullscreen color="light">
+      <IonContent className="ion-padding-horizontal" fullscreen >
         <IonHeader collapse="condense" >
-          <IonToolbar color="light" className="ion-wrap ion-justify-content-between">
+          <IonToolbar className="ion-wrap ion-justify-content-between">
             <IonTitle size="large" className="ion-text-wrap">{title}</IonTitle>
             {toolbarButtons}
           </IonToolbar>

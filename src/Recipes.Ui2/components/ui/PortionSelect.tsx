@@ -23,7 +23,7 @@ function PortionSelect(
   };
 
   return (
-    <IonItem color="light">
+    <IonItem color="--ion-color-slate-900">
       <IonIcon slot="start" icon={peopleOutline} />
       <IonSelect
         value={portions}

@@ -1,6 +1,6 @@
 import {Redirect, Route} from 'react-router-dom';
 import {IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs} from '@ionic/react';
-import {cog, flash, list} from 'ionicons/icons';
+import {add, readerOutline, search} from 'ionicons/icons';
 import Recipes from "./Recipes";
 import Add from './Add';
 import View from "./View";
@@ -19,16 +19,16 @@ const Tabs = () => {
                 <Route path="/tabs" render={() => <Redirect to={routes.home}/>} exact={true}/>
             </IonRouterOutlet>
             <IonTabBar slot="bottom">
-                <IonTabButton tab="tab1" href={routes.home}>
-                    <IonIcon icon={flash}/>
+                <IonTabButton tab="recipes" href={routes.home}>
+                    <IonIcon icon={readerOutline}/>
                     <IonLabel>Recipes</IonLabel>
                 </IonTabButton>
                 <IonTabButton tab="tab2" href="/tabs/lists">
-                    <IonIcon icon={list}/>
-                    <IonLabel>Lists</IonLabel>
+                    <IonIcon icon={search}/>
+                    <IonLabel>Search</IonLabel>
                 </IonTabButton>
-                <IonTabButton tab="tab3" href={routes.add}>
-                    <IonIcon icon={cog}/>
+                <IonTabButton tab="add" href={routes.add}>
+                    <IonIcon icon={add}/>
                     <IonLabel>Add</IonLabel>
                 </IonTabButton>
             </IonTabBar>

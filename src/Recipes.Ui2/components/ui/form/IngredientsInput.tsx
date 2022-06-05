@@ -49,13 +49,13 @@ function IngredientsInput() {
             update(index, { ...currentValue, isGroupHeader: !currentValue.isGroupHeader });
           }}
         >
-          <div className="flex flex-row px-2 py-2 items-center">
+          <div className="flex flex-row py-2 items-center">
           <Controller
             render={({ field: { onChange, value } }) => (
               <IonTextarea
                   /* eslint-disable-next-line react/jsx-props-no-spreading */
                 {...register(`ingredients.${index}.quantity` as const)}
-                  className="text-right flex"
+                  className="text-right flex p-0"
                 onIonChange={onChange}
                 value={value}
                 inputmode="numeric"
