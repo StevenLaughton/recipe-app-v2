@@ -19,13 +19,13 @@ public class RecipesControllerTests
     {
         //Arrange
         var mediator = new Mock<IMediator>();
-        mediator.Setup(m => m.Send(It.IsAny<GetRecipeListRequest>(), It.IsAny<CancellationToken>()))
-            .ReturnsAsync(It.IsAny<List<RecipeListItemDto>>());
-        var controller = new RecipesController(mediator.Object);
-
-        //Act
-        await mediator.Object.Send(new GetRecipeListRequest(Fare.Food));
-        // controller.GetList()
+        // mediator.Setup(m => m.Send(It.IsAny<GetRecipeListRequest>(), It.IsAny<CancellationToken>()))
+        //     .ReturnsAsync(It.IsAny<List<RecipeListItemDto>>());
+        // var controller = new RecipesController(mediator.Object);
+        //
+        // //Act
+        // await mediator.Object.Send(new GetRecipeListRequest(Fare.Food));
+        // // controller.GetList()
 
         //Assert
         mediator.Verify(x => x.Send(It.IsAny<GetRecipeListRequest>(), It.IsAny<CancellationToken>()));
