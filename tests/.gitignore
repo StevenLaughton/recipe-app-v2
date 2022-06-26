@@ -2,7 +2,7 @@
 */bin
 */obj
 
-Recipes.Api/appsettings.Development.json
+*/appsettings.Development.json
 # Ignore Mac system files
 .DS_store
 
