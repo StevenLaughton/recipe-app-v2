@@ -9,5 +9,5 @@ module.exports = {
   layer: {
     extend: {},
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [],
 };

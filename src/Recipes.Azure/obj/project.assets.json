@@ -46,6 +46,19 @@
           "lib/netstandard2.0/Azure.Storage.Common.dll": {}
         }
       },
+      "Microsoft.AspNetCore.Http.Features/5.0.16": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "5.0.1",
+          "System.IO.Pipelines": "5.0.2"
+        },
+        "compile": {
+          "lib/net5.0/Microsoft.AspNetCore.Http.Features.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.AspNetCore.Http.Features.dll": {}
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
         "type": "package",
         "compile": {
@@ -114,6 +127,15 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Pipelines/5.0.2": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.0/System.IO.Pipelines.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.IO.Pipelines.dll": {}
         }
       },
       "System.Memory.Data/1.0.2": {
@@ -232,6 +254,25 @@
         "azureicon.png",
         "lib/netstandard2.0/Azure.Storage.Common.dll",
         "lib/netstandard2.0/Azure.Storage.Common.xml"
+      ]
+    },
+    "Microsoft.AspNetCore.Http.Features/5.0.16": {
+      "sha512": "1QU3LxQr9F5bfmfakJ9FcAG/sOHIA3WZXIQviN+QDP1TsrWzcZ34CLO/IjauLJtO6lYJeXObpCA40lNJfqXbGQ==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.http.features/5.0.16",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.AspNetCore.Http.Features.dll",
+        "lib/net461/Microsoft.AspNetCore.Http.Features.xml",
+        "lib/net5.0/Microsoft.AspNetCore.Http.Features.dll",
+        "lib/net5.0/Microsoft.AspNetCore.Http.Features.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.xml",
+        "microsoft.aspnetcore.http.features.5.0.16.nupkg.sha512",
+        "microsoft.aspnetcore.http.features.nuspec"
       ]
     },
     "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
@@ -376,6 +417,32 @@
         "system.io.hashing.6.0.0.nupkg.sha512",
         "system.io.hashing.nuspec",
         "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.IO.Pipelines/5.0.2": {
+      "sha512": "Iew+dfa6FFiyvWBdRmXApixRY1db+beyutpIck4SOSe0NLM8FD/7AD54MscqVLhvfSMLHO7KadjTRT7fqxOGTA==",
+      "type": "package",
+      "path": "system.io.pipelines/5.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.IO.Pipelines.dll",
+        "lib/net461/System.IO.Pipelines.xml",
+        "lib/netcoreapp3.0/System.IO.Pipelines.dll",
+        "lib/netcoreapp3.0/System.IO.Pipelines.xml",
+        "lib/netstandard1.3/System.IO.Pipelines.dll",
+        "lib/netstandard1.3/System.IO.Pipelines.xml",
+        "lib/netstandard2.0/System.IO.Pipelines.dll",
+        "lib/netstandard2.0/System.IO.Pipelines.xml",
+        "ref/netcoreapp2.0/System.IO.Pipelines.dll",
+        "ref/netcoreapp2.0/System.IO.Pipelines.xml",
+        "system.io.pipelines.5.0.2.nupkg.sha512",
+        "system.io.pipelines.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Memory.Data/1.0.2": {
@@ -555,6 +622,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "Azure.Storage.Blobs >= 12.12.0",
+      "Microsoft.AspNetCore.Http.Features >= 5.0.16",
       "Microsoft.Extensions.Options >= 6.0.0"
     ]
   },
@@ -602,6 +670,10 @@
           "Azure.Storage.Blobs": {
             "target": "Package",
             "version": "[12.12.0, )"
+          },
+          "Microsoft.AspNetCore.Http.Features": {
+            "target": "Package",
+            "version": "[5.0.16, )"
           },
           "Microsoft.Extensions.Options": {
             "target": "Package",

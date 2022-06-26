@@ -5,6 +5,7 @@ using Recipes.Core.Services;
 using Recipes.Infrastructure.Dtos;
 using Recipes.Infrastructure.Entities;
 using Recipes.Infrastructure.Enums;
+using Recipes.Infrastructure.Models;
 
 namespace Recipes.Api.Controllers;
 
@@ -19,10 +20,13 @@ public class RecipesController : ControllerBase
     }
 
     [HttpGet(Routes.Default)]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IList<RecipeListItemDto>))]
-    public async Task<IActionResult> GetList([FromQuery] Fare fare, CancellationToken cancellationToken)
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PaginatedList<RecipeListItemDto>))]
+    public async Task<IActionResult> GetList([FromQuery] PaginationFilter filter, [FromQuery] Fare fare,
+        CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(new GetRecipeListRequest(fare), cancellationToken);
+        var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
+
+        var result = await _mediator.Send(new GetRecipeListRequest(validFilter, fare), cancellationToken);
 
         return Ok(result);
     }
@@ -40,10 +44,10 @@ public class RecipesController : ControllerBase
     public async Task<IActionResult> Add([FromForm] RecipeDto recipe, CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(new AddRecipeRequest(recipe), cancellationToken);
-        
+
         return Ok(result);
     }
-    
+
     [HttpPut(Routes.Default)]
     public async Task<IActionResult> Edit([FromForm] RecipeDto recipe, CancellationToken cancellationToken)
     {

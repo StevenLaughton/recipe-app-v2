@@ -2,6 +2,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Recipes.Infrastructure;
 using Recipes.Infrastructure.Dtos;
+using Recipes.Infrastructure.Entities;
 
 namespace Recipes.Core.Services;
 
@@ -21,33 +22,7 @@ public class GetRecipeHandler : IRequestHandler<GetRecipeRequest, RecipeDto>
         var dto = await _context.Recipes
             .AsSplitQuery()
             .AsNoTracking()
-            .Select(recipe => new RecipeDto
-            {
-                Id = recipe.Id,
-                Name = recipe.Name,
-                Fare = recipe.Fare,
-                IsVegetarian = recipe.IsVegetarian,
-                Portions = recipe.Portions,
-                ImageUrl = recipe.ImageUrl,
-                Ingredients = recipe.Ingredients.Select(ingredient => new IngredientDto
-                {
-                    Id = ingredient.Id,
-                    Text = ingredient.Text,
-                    Quantity = ingredient.Quantity,
-                    IsGroupHeader = ingredient.IsGroupHeader
-                }),
-                Steps = recipe.Steps.Select(step => new StepDto
-                {
-                    Id = step.Id,
-                    IsGroupHeader = step.IsGroupHeader,
-                    Text = step.Text
-                }),
-                Tags = recipe.Tags.Select(tag => new TagDto
-                {
-                    Id = tag.Id,
-                    Title = tag.Title
-                })
-            })
+            .Select(Recipe.MapToDto())
             .FirstOrDefaultAsync(recipe => recipe.Id == request.Id, cancellationToken);
 
         if (dto is null)

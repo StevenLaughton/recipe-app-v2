@@ -16,24 +16,24 @@ function AppPage({
   title, isLoading = false, loadingMessage = '', children, toolbarButtons,
 }: AppPageProps) {
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>{ title }</IonTitle>
-          {toolbarButtons}
-        </IonToolbar>
-      </IonHeader>
-      <IonContent className="ion-padding-horizontal" fullscreen >
-        <IonHeader collapse="condense" >
-          <IonToolbar className="ion-wrap ion-justify-content-between">
-            <IonTitle size="large" className="ion-text-wrap">{title}</IonTitle>
+      <IonPage>
+        <IonHeader collapse="fade">
+          <IonToolbar>
+            <IonTitle>{ title }</IonTitle>
             {toolbarButtons}
           </IonToolbar>
         </IonHeader>
-        <IonLoading isOpen={isLoading} message={loadingMessage} />
-        { children }
-      </IonContent>
-    </IonPage>
+        <IonContent className="ion-padding" fullscreen>
+          <IonHeader collapse="condense" >
+            <IonToolbar className="ion-wrap ion-justify-content-between">
+              <IonTitle size="large" className="ion-text-wrap">{title}</IonTitle>
+              {toolbarButtons}
+            </IonToolbar>
+          </IonHeader>
+          {/*<IonLoading isOpen={isLoading} message={loadingMessage} />*/}
+          { children }
+        </IonContent>
+      </IonPage>
   );
 }
 

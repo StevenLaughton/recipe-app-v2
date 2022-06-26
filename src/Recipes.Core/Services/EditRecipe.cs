@@ -1,4 +1,3 @@
-using AutoMapper;
 using MediatR;
 using Recipes.Azure.Implementations;
 using Recipes.Core.Extensions;
@@ -14,13 +13,11 @@ public record EditRecipeRequest(RecipeDto Recipe) : IRequest<bool>;
 public class EditRecipe : IRequestHandler<EditRecipeRequest, bool>
 {
     private readonly DatabaseContext _context;
-    private readonly IMapper _mapper;
     private readonly IAzureBlobService _azureBlobService;
 
-    public EditRecipe(DatabaseContext context, IMapper mapper, IAzureBlobService azureBlobService)
+    public EditRecipe(DatabaseContext context, IAzureBlobService azureBlobService)
     {
         _context = context ?? throw new ArgumentNullException(nameof(context));
-        _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         _azureBlobService = azureBlobService ?? throw new ArgumentNullException(nameof(azureBlobService));
     }
 
@@ -28,25 +25,21 @@ public class EditRecipe : IRequestHandler<EditRecipeRequest, bool>
     {
         var entity = await _context.GetRecipeById(request.Recipe.Id);
 
-        var existingImage = entity.ImageUrl.GetFilenameFromUrl();
-        
-         entity = _mapper.Map(request.Recipe, entity);
-        
-         if (request.Recipe.Image is not null)
+        if (request.Recipe.Image is not null)
         {
-            using var stream = new MemoryStream();
-            await request.Recipe.Image.CopyToAsync(stream, cancellationToken);
-            stream.Position = 0;
-            var imageUrl = await _azureBlobService.UploadBlobAsync(stream, existingImage ?? request.Recipe.Image.FileName, cancellationToken);
-            entity.ImageUrl = imageUrl;
+            var filename = entity.ImageUrl.GetFilenameFromUrl() ?? request.Recipe.Image.FileName;
+            entity.ImageUrl =
+                await _azureBlobService.UploadFileToBlobAsync(request.Recipe.Image, filename, cancellationToken);
         }
 
+        entity = request.Recipe.MapToEntity(entity);
+        
         entity.Tags = new List<Tag>();
 
         _context.Recipes.Update(entity);
 
-        await _context.SaveChangesAsync(cancellationToken);
+        var edited = await _context.SaveChangesAsync(cancellationToken);
 
-        return true;
+        return edited == 1;
     }
 }

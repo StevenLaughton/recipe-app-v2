@@ -1,5 +1,5 @@
 const withTM = require('next-transpile-modules')(
-  ['@ionic/react', '@ionic/core', '@stencil/core', 'ionicons']
+  ['@ionic/react', '@ionic/core', 'ionicons']
 );
 const withPWA = require('next-pwa');
 

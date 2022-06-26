@@ -18,11 +18,9 @@ builder.AddCommandHandling()
     .AddDataAccess()
     .AddCors()
     .ConfigureLogging()
-    .AddAutoMapper()
     .AddModelValidation();
 
 builder.Services.AddScoped<IAzureBlobService, AzureBlobService>();
-
 
 var app = builder.Build();
 

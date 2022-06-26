@@ -14,7 +14,6 @@ window.matchMedia("(prefers-color-scheme: dark)").addListener(async (status) => 
     }
 });
 
-
 const AppShell = () => {
     const [present, dismiss] = useIonToast();
 

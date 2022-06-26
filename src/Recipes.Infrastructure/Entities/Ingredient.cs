@@ -1,4 +1,3 @@
-using Recipes.Infrastructure.Dtos;
 using Recipes.Infrastructure.Interfaces;
 
 namespace Recipes.Infrastructure.Entities;

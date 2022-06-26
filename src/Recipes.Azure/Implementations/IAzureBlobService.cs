@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Http;
+
 namespace Recipes.Azure.Implementations;
 
 public interface IAzureBlobService
 {
-    public Task<string> UploadBlobAsync(Stream content, string filename, CancellationToken cancellationToken);
+    public Task<string> UploadFileToBlobAsync(IFormFile file, string filename, CancellationToken cancellationToken);
 
-    public Task DeleteBlobAsync(string filename, CancellationToken cancellationToken);
+    public Task<bool> DeleteBlobAsync(string filename, CancellationToken cancellationToken);
 }
