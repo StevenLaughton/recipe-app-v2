@@ -15,18 +15,19 @@ interface AppPageProps extends Partial<Props>{
 function AppPage({
   title, isLoading = false, loadingMessage = '', children, toolbarButtons,
 }: AppPageProps) {
+    console.log(isLoading)
   return (
       <IonPage>
-        <IonHeader collapse="fade">
+        <IonHeader translucent={true}>
           <IonToolbar>
             <IonTitle>{ title }</IonTitle>
-            {toolbarButtons}
+            {/*{toolbarButtons}*/}
           </IonToolbar>
         </IonHeader>
-        <IonContent className="ion-padding" fullscreen>
+        <IonContent className="ion-padding" fullscreen={true} >
           <IonHeader collapse="condense" >
             <IonToolbar className="ion-wrap ion-justify-content-between">
-              <IonTitle size="large" className="ion-text-wrap">{title}</IonTitle>
+              <IonTitle size="large" >{title}</IonTitle>
               {toolbarButtons}
             </IonToolbar>
           </IonHeader>

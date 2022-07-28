@@ -19,27 +19,27 @@ public class Recipe : IRecipe
 
     public static Expression<Func<Recipe, RecipeDto>> MapToDto()
     {
-        return dto => new RecipeDto
+        return recipe => new RecipeDto
         {
-            Id = dto.Id,
-            Name = dto.Name,
-            Portions = dto.Portions,
-            IsVegetarian = dto.IsVegetarian,
-            Fare = dto.Fare,
-            Ingredients = dto.Ingredients.AsQueryable().Select(i => new IngredientDto
+            Id = recipe.Id,
+            Name = recipe.Name,
+            Portions = recipe.Portions,
+            IsVegetarian = recipe.IsVegetarian,
+            Fare = recipe.Fare,
+            Ingredients = recipe.Ingredients.AsQueryable().Select(i => new IngredientDto
             {
                 Id = i.Id,
                 Quantity = i.Quantity,
                 Text = i.Text,
                 IsGroupHeader = i.IsGroupHeader
             }),
-            Steps = dto.Steps.AsQueryable().Select(s => new StepDto
+            Steps = recipe.Steps.AsQueryable().Select(s => new StepDto
             {
                 Id = s.Id,
                 Text = s.Text,
                 IsGroupHeader = s.IsGroupHeader
             }),
-            Tags = dto.Tags.AsQueryable().Select(tag => new TagDto
+            Tags = recipe.Tags.AsQueryable().Select(tag => new TagDto
             {
                 Id = tag.Id,
                 Title = tag.Title

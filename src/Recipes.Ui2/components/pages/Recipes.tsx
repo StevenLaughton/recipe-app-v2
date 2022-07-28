@@ -1,9 +1,5 @@
 import Image from 'next/image';
-import {
-    IonButtons,
-    IonInfiniteScroll,
-    IonInfiniteScrollContent
-} from '@ionic/react';
+import {IonButtons} from '@ionic/react';
 import {useState} from 'react';
 import {RecipeListItem} from "../../types/recipeListItem";
 import Fare from "../../models/constants/fare";
@@ -52,11 +48,13 @@ export default function Recipes() {
     }
 
     const {data, loading} = useFetch<PaginatedList<RecipeListItem>>(
-        `recipes/getList?pageNumber=${page}&pageSize=10&fare=${fare}`,
-        {
-            onNewData: (currRecipe, newRecipe) => appendData(currRecipe, newRecipe),
-            data: {hasNextPage: true, data: []},
-        }, [page, fare]);
+        `recipes/getList?pageNumber=${1}&pageSize=10&fare=${fare}`,
+        {},
+        // {
+        //     onNewData: (currRecipe, newRecipe) => appendData(currRecipe, newRecipe),
+        //     data: {hasNextPage: true, data: []},
+        // },
+        [fare]);
 
 
     const loadData = async (ev: any) => {
@@ -65,14 +63,13 @@ export default function Recipes() {
         }
         ev.target.complete();
     }
-
     return (
         <AppPage
             title="Recipes"
-            isLoading={loading && initialLoad}
+            isLoading={loading}
             loadingMessage="Loading Recipes"
             toolbarButtons={(
-                <IonButtons slot="primary" collapse className="ion-align-items-baseline">
+                <IonButtons slot="end" collapse={true} className="ion-align-items-baseline">
                     <FareSegment value={fare} onChange={setFare}/>
                 </IonButtons>
             )}>
@@ -85,9 +82,9 @@ export default function Recipes() {
                     />
                 ))}
             </div>
-            <IonInfiniteScroll onIonInfinite={loadData} threshold="100px">
-                <IonInfiniteScrollContent/>
-            </IonInfiniteScroll>
+            {/*<IonInfiniteScroll onIonInfinite={loadData} threshold="100px">*/}
+            {/*    <IonInfiniteScrollContent/>*/}
+            {/*</IonInfiniteScroll>*/}
         </AppPage>
     );
 };
