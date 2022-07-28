@@ -34,7 +34,7 @@ public class GetRecipeList : IRequestHandler<GetRecipeListRequest, PaginatedList
 
         var page =  await PaginatedList<RecipeListItemDto>.CreateAsync(query,
             request.Filter.PageNumber,
-            request.Filter.PageSize,
+            int.MaxValue,
             cancellationToken);
 
         return page;
