@@ -1,0 +1,42 @@
+{
+  "routes": [
+    {
+      "route": "/tabs",
+      "allowedRoles": ["anonymous"]
+    },
+    {
+      "route": "/tabs/recipes",
+      "allowedRoles": ["anonymous"]
+    },
+    {
+      "route": "/tabs/recipes*",
+      "allowedRoles": ["anonymous"]
+    },
+    {
+      "route": "/tabs/add",
+      "allowedRoles": ["anonymous"]
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "index.html",
+    "exclude": [
+      "/static/media/*.{png,jpg,gif,svg}",
+      "/static/css/*"
+    ]
+  },
+  "responseOverrides": {
+    "400": {
+      "rewrite": "/"
+    },
+    "401": {
+      "redirect": "/login",
+      "statusCode": 302
+    },
+    "403": {
+      "rewrite": "/"
+    },
+    "404": {
+      "rewrite": "/index.html"
+    }
+  }
+}

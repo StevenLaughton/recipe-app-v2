@@ -22,3 +22,15 @@
 /Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Azure/obj/Debug/net6.0/refint/Recipes.Azure.dll
 /Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Azure/obj/Debug/net6.0/Recipes.Azure.pdb
 /Users/stevenlaughton/RiderProjects/RecipeApp2/src/Recipes.Azure/obj/Debug/net6.0/ref/Recipes.Azure.dll
+C:\Users\StevenLaughton\Documents\recipe-app-v2\src\Recipes.Azure\bin\Debug\net6.0\Recipes.Azure.deps.json
+C:\Users\StevenLaughton\Documents\recipe-app-v2\src\Recipes.Azure\bin\Debug\net6.0\Recipes.Azure.dll
+C:\Users\StevenLaughton\Documents\recipe-app-v2\src\Recipes.Azure\bin\Debug\net6.0\ref\Recipes.Azure.dll
+C:\Users\StevenLaughton\Documents\recipe-app-v2\src\Recipes.Azure\bin\Debug\net6.0\Recipes.Azure.pdb
+C:\Users\StevenLaughton\Documents\recipe-app-v2\src\Recipes.Azure\obj\Debug\net6.0\Recipes.Azure.csproj.AssemblyReference.cache
+C:\Users\StevenLaughton\Documents\recipe-app-v2\src\Recipes.Azure\obj\Debug\net6.0\Recipes.Azure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\StevenLaughton\Documents\recipe-app-v2\src\Recipes.Azure\obj\Debug\net6.0\Recipes.Azure.AssemblyInfoInputs.cache
+C:\Users\StevenLaughton\Documents\recipe-app-v2\src\Recipes.Azure\obj\Debug\net6.0\Recipes.Azure.AssemblyInfo.cs
+C:\Users\StevenLaughton\Documents\recipe-app-v2\src\Recipes.Azure\obj\Debug\net6.0\Recipes.Azure.csproj.CoreCompileInputs.cache
+C:\Users\StevenLaughton\Documents\recipe-app-v2\src\Recipes.Azure\obj\Debug\net6.0\Recipes.Azure.dll
+C:\Users\StevenLaughton\Documents\recipe-app-v2\src\Recipes.Azure\obj\Debug\net6.0\ref\Recipes.Azure.dll
+C:\Users\StevenLaughton\Documents\recipe-app-v2\src\Recipes.Azure\obj\Debug\net6.0\Recipes.Azure.pdb
