@@ -8,6 +8,7 @@ import RecipesService from "../services/recipes.service";
 import {useIonRouter} from "@ionic/react";
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
+import {useQuery} from "@tanstack/react-query";
 
 interface EditPageProps extends RouteComponentProps<{ id: string }> {
 }
@@ -23,7 +24,7 @@ function Edit({match}: EditPageProps) {
     });
 
     useEffect(() => {
-        RecipesService.get(match.params.id)
+        RecipesService.get(+match.params.id)
                 .then((recipe: Recipe) => {
                     setRecipe(recipe);
                     form.reset(recipe)
