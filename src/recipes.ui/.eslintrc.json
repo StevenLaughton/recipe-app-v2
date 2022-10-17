@@ -1,24 +1,45 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
+  "env" : {
+    "browser" : true,
+    "es2021" : true
+  },
+  "extends" : [
+    "airbnb",
+    "airbnb-typescript"
+  ],
+  "settings" : {
+    "react" : {
+      // Tells eslint-plugin-react to automatically detect the version of React to use.
+      "version" : "detect"
     },
-    "extends": [
-      "airbnb",
-      "airbnb-typescript"
+    // Tells eslint how to resolve imports
+    "import/resolver" : {
+      "node" : {
+        "paths" : [
+          "src"
+        ],
+        "extensions" : [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    }
+  },
+  "overrides" : [
+  ],
+  "parserOptions" : {
+    "project" : [
+      "./tsconfig.json"
     ],
-    "overrides": [
-    ],
-    "parserOptions": {
-        "project": ["./tsconfig.json"],
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react",
-        "@typescript-eslint"
-
-    ],
+    "ecmaVersion" : "latest",
+    "sourceType" : "module"
+  },
+  "plugins" : [
+    "react",
+    "@typescript-eslint"
+  ],
     "rules": {
     }
 }
