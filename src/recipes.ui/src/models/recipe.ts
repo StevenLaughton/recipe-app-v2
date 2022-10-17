@@ -29,5 +29,4 @@ export const recipeSchema = object({
   tags: array(),
 }).required();
 
-export interface Recipe extends InferType<typeof recipeSchema> {
-}
+export type Recipe = InferType<typeof recipeSchema>;

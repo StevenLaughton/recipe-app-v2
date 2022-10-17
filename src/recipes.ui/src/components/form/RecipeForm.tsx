@@ -1,5 +1,5 @@
 import {
-  IonButton, IonCard, IonGrid, IonLabel, IonListHeader, IonToggle,
+  IonButton, IonCard, IonGrid, IonLabel, IonListHeader, IonToggle, ToggleChangeEventDetail,
 } from '@ionic/react';
 import { Controller, FormProvider, UseFormReturn } from 'react-hook-form';
 import React from 'react';
@@ -9,7 +9,7 @@ import IngredientsInput from './IngredientsInput';
 import StepsInput from './StepsInput';
 import ImageInput from './ImageInput';
 import FareSegment from '../FareSegment';
-import {Recipe} from "../../models/recipe";
+import { Recipe } from '../../models/recipe';
 
 interface Props {
   form: UseFormReturn<Recipe>
@@ -35,7 +35,7 @@ function RecipeForm({ form, onSubmit }:Props) {
             <Controller
               render={({ field: { onChange, value } }) => (
                 <IonToggle
-                  onIonChange={(e: any) => onChange(e?.detail.checked)}
+                  onIonChange={(e: CustomEvent<ToggleChangeEventDetail>) => onChange(e?.detail.checked)}
                   checked={value}
                   color="success"
                 />

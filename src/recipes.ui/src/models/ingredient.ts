@@ -18,5 +18,4 @@ export const ingredientSchema = object({
   isGroupHeader: boolean().default(false),
 });
 
-export interface Ingredient extends InferType<typeof ingredientSchema> {
-}
+export type Ingredient = InferType<typeof ingredientSchema>;

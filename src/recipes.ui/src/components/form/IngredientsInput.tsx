@@ -5,9 +5,9 @@ import {
 } from 'react-hook-form';
 import InputItem from './InputItem';
 import ErrorMessage from './ErrorMessage';
-import parseIngredients from "../../helpers/ingredients.helper";
-import mimeTypes from "../../models/constants/mimeTypes";
-import {Ingredient} from "../../models/ingredient";
+import parseIngredients from '../../helpers/ingredients.helper';
+import mimeTypes from '../../models/constants/mimeTypes';
+import { Ingredient } from '../../models/ingredient';
 
 function IngredientsInput() {
   const {
@@ -50,45 +50,45 @@ function IngredientsInput() {
           }}
         >
           <div className="flex flex-row py-2 items-center">
-          <Controller
-            render={({ field: { onChange, value } }) => (
-              <IonTextarea
+            <Controller
+              render={({ field: { onChange, value } }) => (
+                <IonTextarea
                   /* eslint-disable-next-line react/jsx-props-no-spreading */
-                {...register(`ingredients.${index}.quantity` as const)}
+                  {...register(`ingredients.${index}.quantity` as const)}
                   className="text-right flex p-0"
-                onIonChange={onChange}
-                value={value}
-                inputmode="numeric"
-                onPaste={(event$) => parseAndInsert(event$, index)}
-                onKeyDown={(event$) => insertNewRowIfEnter(event$, index)}
-                rows={1}
-                autoGrow
-                style={{ flexBasis: '25%', fontWeight: watch(`ingredients.${index}.isGroupHeader`) ? 'bold' : 'normal' }}
-              />
-            )}
-            control={control}
-            name={`ingredients.${index}.quantity`}
-          />
-          <Controller
-            render={({ field: { onChange, value } }) => (
-              <IonTextarea
+                  onIonChange={onChange}
+                  value={value}
+                  inputmode="numeric"
+                  onPaste={(event$) => parseAndInsert(event$, index)}
+                  onKeyDown={(event$) => insertNewRowIfEnter(event$, index)}
+                  rows={1}
+                  autoGrow
+                  style={{ flexBasis: '25%', fontWeight: watch(`ingredients.${index}.isGroupHeader`) ? 'bold' : 'normal' }}
+                />
+              )}
+              control={control}
+              name={`ingredients.${index}.quantity`}
+            />
+            <Controller
+              render={({ field: { onChange, value } }) => (
+                <IonTextarea
                   /* eslint-disable-next-line react/jsx-props-no-spreading */
-                {...register(`ingredients.${index}.text` as const)}
-                onIonChange={onChange}
-                value={value}
-                className="input flex w-full flex-auto"
-                rows={1}
-                autoGrow
-                onPaste={(event$) => parseAndInsert(event$, index)}
-                onKeyDown={(event$) => insertNewRowIfEnter(event$, index)}
-                style={{ flex: '1 1 auto', fontWeight: watch(`ingredients.${index}.isGroupHeader`) ? 'bold' : 'normal' }}
-              />
-            )}
-            control={control}
-            name={`ingredients.${index}.text`}
-          />
-          <ErrorMessage control={`ingredients.${index}.quantity`} state={formState} />
-          <ErrorMessage control={`ingredients.${index}.text`} state={formState} />
+                  {...register(`ingredients.${index}.text` as const)}
+                  onIonChange={onChange}
+                  value={value}
+                  className="input flex w-full flex-auto"
+                  rows={1}
+                  autoGrow
+                  onPaste={(event$) => parseAndInsert(event$, index)}
+                  onKeyDown={(event$) => insertNewRowIfEnter(event$, index)}
+                  style={{ flex: '1 1 auto', fontWeight: watch(`ingredients.${index}.isGroupHeader`) ? 'bold' : 'normal' }}
+                />
+              )}
+              control={control}
+              name={`ingredients.${index}.text`}
+            />
+            <ErrorMessage control={`ingredients.${index}.quantity`} state={formState} />
+            <ErrorMessage control={`ingredients.${index}.text`} state={formState} />
           </div>
         </InputItem>
       ))}

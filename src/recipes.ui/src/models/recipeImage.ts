@@ -8,5 +8,4 @@ export const recipeImageSchema = object({
   data: mixed<Blob>().required(),
 });
 
-export interface RecipeImage extends InferType<typeof recipeImageSchema> {
-}
+export type RecipeImage = InferType<typeof recipeImageSchema>;

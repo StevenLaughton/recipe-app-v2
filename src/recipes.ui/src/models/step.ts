@@ -8,5 +8,4 @@ export const stepSchema = object({
   isGroupHeader: boolean().default(false),
 });
 
-export interface Step extends InferType<typeof stepSchema> {
-}
+export type Step = InferType<typeof stepSchema>;

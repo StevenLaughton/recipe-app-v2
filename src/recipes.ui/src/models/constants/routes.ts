@@ -3,9 +3,9 @@ const routes = {
   search: '/search',
   add: '/add',
   view: (recipeId: number) => `/recipes/${recipeId}`,
-  viewDef: `/recipes/:id`,
+  viewDef: '/recipes/:id',
   edit: (recipeId: string) => `/recipes/${recipeId}/edit`,
-  editDef: `/recipes/:id/edit`,
+  editDef: '/recipes/:id/edit',
 };
 
 export default routes;

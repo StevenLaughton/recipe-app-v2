@@ -5,7 +5,7 @@ import {
 } from 'react-hook-form';
 import InputItem from './InputItem';
 import ErrorMessage from './ErrorMessage';
-import {stepSchema} from "../../models/step";
+import { stepSchema } from '../../models/step';
 
 function StepsInput() {
   const {
@@ -31,35 +31,35 @@ function StepsInput() {
   return (
     <>
       {fields.map((item: FieldValues, index) => (
-          <InputItem
-              key={item.id}
-            fields={fields}
-            remove={() => remove(index)}
-            setGroupHeader={() => {
-              const currentValue = getValues(`steps.${index}`);
-              update(index, { ...currentValue, isGroupHeader: !currentValue.isGroupHeader });
-            }}
-          >
-            <Controller
-              render={({ field: { onChange, value } }) => (
-                <IonTextarea
+        <InputItem
+          key={item.id}
+          fields={fields}
+          remove={() => remove(index)}
+          setGroupHeader={() => {
+            const currentValue = getValues(`steps.${index}`);
+            update(index, { ...currentValue, isGroupHeader: !currentValue.isGroupHeader });
+          }}
+        >
+          <Controller
+            render={({ field: { onChange, value } }) => (
+              <IonTextarea
                     /* eslint-disable-next-line react/jsx-props-no-spreading */
-                  {...register(`steps.${index}.text` as const)}
-                  className="px-2 py-2"
-                  onIonChange={onChange}
-                  value={value}
-                  rows={1}
-                  autoGrow
-                  onPaste={(event$) => parseAndInsert(event$, index)}
-                  onKeyDown={(event$) => insertNewRowIfEnter(event$, index)}
-                  style={{ fontWeight: watch(`steps.${index}.isGroupHeader`) ? 'bold' : 'normal' }}
-                />
-              )}
-              control={control}
-              name={`steps.${index}.text`}
-            />
-            <ErrorMessage control={`steps.${index}.text`} state={formState} position="stacked" />
-          </InputItem>
+                {...register(`steps.${index}.text` as const)}
+                className="px-2 py-2"
+                onIonChange={onChange}
+                value={value}
+                rows={1}
+                autoGrow
+                onPaste={(event$) => parseAndInsert(event$, index)}
+                onKeyDown={(event$) => insertNewRowIfEnter(event$, index)}
+                style={{ fontWeight: watch(`steps.${index}.isGroupHeader`) ? 'bold' : 'normal' }}
+              />
+            )}
+            control={control}
+            name={`steps.${index}.text`}
+          />
+          <ErrorMessage control={`steps.${index}.text`} state={formState} position="stacked" />
+        </InputItem>
       ))}
     </>
   );
