@@ -7,7 +7,7 @@ const pwaManifest: Partial<VitePWAOptions> = {
     base: '/',
     registerType: 'prompt',
     manifest: {
-        background_color: "#008f00",
+        background_color: "#0f172a",
         description: "my recipe app",
         dir: "ltr",
         display: "standalone",
@@ -19,15 +19,15 @@ const pwaManifest: Partial<VitePWAOptions> = {
         theme_color: "#008f00",
         icons: [
             {
-                "src": "assets/icon/bowl.svg",
-                "sizes": "64x64 32x32 24x24 16x16",
-                "type": "image/x-icon"
+                src: "bowl.svg",
+                sizes: "64x64 32x32 24x24 16x16",
+                type: "image/x-icon"
             },
             {
-                "src": "assets/icon/bowl.svg",
-                "type": "image/png",
-                "sizes": "512x512",
-                "purpose": "maskable any"
+                src: "bowl.svg",
+                type: "image/png",
+                sizes: "512x512",
+                purpose: "maskable any"
             }
         ]
     }
